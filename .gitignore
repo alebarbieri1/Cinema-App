@@ -4,3 +4,4 @@
 /Cinema-App-war/dist/
 /dist/
 /build/
+*.properties
