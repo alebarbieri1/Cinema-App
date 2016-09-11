@@ -1,0 +1,63 @@
+CREATE TABLE usuario_info (
+id_usuarioinfo BIGINT PRIMARY KEY,
+nome VARCHAR(100),
+email VARCHAR(128),
+aniversario DATE,
+completos INT,
+assistindo INT
+);
+
+CREATE TABLE usuario (
+id_usuario BIGINT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1,INCREMENT BY 1),
+nome_usuario VARCHAR(100),
+senha VARCHAR(64)
+);
+
+CREATE TABLE registro_filme (
+id_registro_filme BIGINT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1,INCREMENT BY 1),
+id_usuario BIGINT,
+id_filme BIGINT,
+status VARCHAR(32),
+data_assistido DATE,
+nota INTEGER,
+FOREIGN KEY(id_usuario) REFERENCES usuario (id_usuario)
+);
+
+CREATE TABLE registro_serie (
+id_registro_serie BIGINT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1,INCREMENT BY 1),
+id_usuario BIGINT,
+id_serie BIGINT,
+status VARCHAR(32),
+data_inicio DATE,
+data_fim DATE,
+progresso INTEGER,
+nota INTEGER,
+FOREIGN KEY(id_usuario) REFERENCES usuario (id_usuario)
+);
+
+CREATE TABLE filme (
+id_filme BIGINT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1,INCREMENT BY 1),
+nome_filme VARCHAR(100),
+sequencia BIGINT,
+anterior BIGINT,
+nota DOUBLE,
+fans INTEGER
+);
+
+CREATE TABLE serie (
+id_serie BIGINT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1,INCREMENT BY 1),
+nome_serie VARCHAR(100 ),
+episodios INTEGER,
+temporada_anterior BIGINT,
+temporada_seguinte BIGINT,
+nota DOUBLE,
+fans INTEGER
+);
+
+ALTER TABLE usuario_info ADD FOREIGN KEY(id_usuarioinfo) REFERENCES usuario (id_usuario);
+ALTER TABLE registro_filme ADD FOREIGN KEY(id_filme) REFERENCES filme (id_filme);
+ALTER TABLE registro_serie ADD FOREIGN KEY(id_serie) REFERENCES serie (id_serie);
+ALTER TABLE filme ADD FOREIGN KEY(sequencia) REFERENCES filme (id_filme);
+ALTER TABLE filme ADD FOREIGN KEY(anterior) REFERENCES filme (id_filme);
+ALTER TABLE serie ADD FOREIGN KEY(temporada_anterior) REFERENCES serie (id_serie);
+ALTER TABLE serie ADD FOREIGN KEY(temporada_seguinte) REFERENCES serie (id_serie);
