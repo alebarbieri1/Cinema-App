@@ -4,4 +4,6 @@
 /Cinema-App-war/dist/
 /dist/
 /build/
-*.properties
+/nbproject/private/*
+/db/*
+*.DS_Store

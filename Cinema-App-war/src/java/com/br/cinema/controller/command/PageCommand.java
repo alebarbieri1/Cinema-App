@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Alexandre Barbieri
+ * @author Victor Oka
  */
-public class UserCommand implements Command {
+public class PageCommand implements Command {
 
     private HttpServletRequest request;
     private HttpServletResponse response;
     private String responsePage;
-
+    
     @Override
     public void init(HttpServletRequest request, HttpServletResponse response) {
         this.request = request;
@@ -26,36 +26,14 @@ public class UserCommand implements Command {
 
     @Override
     public void execute() {
+        responsePage = "home.jsp";
         String action = request.getParameter("command").split("\\.")[1];
-        switch (action) {
-            case "register":
-                register();
-                break;
-            case "login":
-                login();
-                break;
-            case "logout":
-                logout();
-                break;
-        }
-    }
-
-    private void register() {
-
-    }
-
-    private void login() {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-    }
-
-    private void logout() {
-        request.getSession().invalidate();
-        responsePage = "index.jsp";
+        request.getSession().setAttribute("page", action);
     }
 
     @Override
     public String getResponsePage() {
         return this.responsePage;
     }
+    
 }
