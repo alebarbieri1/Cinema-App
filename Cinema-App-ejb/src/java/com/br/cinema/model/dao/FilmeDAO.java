@@ -6,7 +6,6 @@
 package com.br.cinema.model.dao;
 
 import com.br.cinema.model.entities.Filme;
-import com.br.cinema.model.entities.Filme;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;

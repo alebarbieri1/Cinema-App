@@ -17,7 +17,8 @@ import javax.persistence.Query;
 /**
  *
  * @author Prog Felipe
- */@LocalBean
+ */
+@LocalBean
 @Stateful
 public class SerieDAO implements GenericDAO<Serie> {
     

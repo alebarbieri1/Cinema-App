@@ -46,9 +46,7 @@ public class Controller extends HttpServlet {
                 response.sendRedirect(command.getResponsePage());
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
                 Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            }
-         
-          
+            } 
         }
     }
 
