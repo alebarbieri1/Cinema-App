@@ -52,5 +52,10 @@ public class UsuarioDAO implements GenericDAO<Usuario> {
     public Usuario readById(Long id) {
         return em.find(Usuario.class, id);
     }
+     public Usuario readByName(String name) {
+       Query query = em.createNamedQuery("Usuario.findByNomeUsuario");
+       query.setParameter("nomeUsuario", name);
+       return (Usuario)query.getSingleResult();
+    }
 
 }
