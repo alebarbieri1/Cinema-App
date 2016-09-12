@@ -3,8 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Victor/Documents/GitHub/Cinema-App/Cinema-App-ejb/src/java/com/br/cinema/model/entities/Filme.java</file>
-            <file>file:/C:/Users/Victor/Documents/GitHub/Cinema-App/Cinema-App-ejb/src/java/com/br/cinema/model/dao/GenericDAO.java</file>
+            <file>file:/Users/victoroka/GitHub/Cinema-App/Cinema-App-ejb/src/conf/persistence.xml</file>
         </group>
     </open-files>
 </project-private>
