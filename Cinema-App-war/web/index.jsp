@@ -21,33 +21,45 @@
     </head>
     <body>
         <div class="container">
-            <div class="row valign-wrapper">
-                <div class="col s4"></div>
-                <form action="Controller" method="POST" class="col s4">
-                    <input type="hidden" name="command" value="User.login">
-                    <div class="row">
-                        <div class="input-field col s12 valign">
-                            <i class="material-icons prefix white-text">account_circle</i>
-                            <input id="usuario" type="text" class="validate " required="required">
-                            <label class="active white-text" for="usuario">Usuário</label>
+            <div class="col s12 z-depth-4 card-panel">
+                <h3 class="center-align">Login</h3>
+                <div class="row valign-wrapper">
+                    <div class="col s4"></div>
+                    <form action="Controller" method="POST" class="col s4">
+                        <input type="hidden" name="command" value="User.login">
+                        <div class="row">
+                            <div class="input-field col s12 valign">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="usuario" type="text" class="validate " required="required">
+                                <label class="active" for="usuario">Usuário</label>
+                            </div>
+                        </div>  
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">lock</i>
+                                <input id="senha" type="password" class="validate" required="required">
+                                <label class="active" for="senha">Senha</label>
+                            </div>
                         </div>
-                    </div>  
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix white-text">lock</i>
-                            <input id="senha" type="password" class="validate" required="required">
-                            <label class="active white-text" for="senha">Senha</label>
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="center-align">
+                                    <button class="btn waves-effect waves-light" type="submit" name="action">Entrar
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12">
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Entrar
-                                <i class="material-icons right">send</i>
-                            </button>
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <a href="register.jsp">
+                                    Don't have an account? Click here!
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                </form>
-                <div class="col s4"></div>
+                    </form>
+                    <div class="col s4"></div>
+                </div>
             </div>
         </div>
     </body>

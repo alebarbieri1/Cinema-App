@@ -66,7 +66,8 @@ public class UserCommand implements Command {
         ui.setAssistindo(0);
         ui.setCompletos(0);
         ui.setEmail(request.getParameter("email"));
-        ui.setNome(request.getParameter("nome"));
+        //ui.setNome(request.getParameter("first_name") + " " + request.getParameter("last_name"));
+        ui.setNome(request.getParameter("first_name"));
         Usuario u = new Usuario();
         u.setNomeUsuario(request.getParameter("username"));
         u.setSenha(request.getParameter("password"));
