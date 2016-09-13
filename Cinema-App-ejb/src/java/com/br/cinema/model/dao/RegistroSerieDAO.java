@@ -45,7 +45,7 @@ public class RegistroSerieDAO implements GenericDAO<RegistroSerie> {
     @Override
     public List<RegistroSerie> read() {
         Query query = em.createNamedQuery("RegistroSerie.findAll");
-        return query.getResultList();
+        return (List<RegistroSerie>)query.getResultList();
     }
 
     @Override

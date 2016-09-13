@@ -45,7 +45,7 @@ public class FilmeDAO implements GenericDAO<Filme> {
     @Override
     public List<Filme> read() {
         Query query = em.createNamedQuery("Filme.findAll");
-        return query.getResultList();
+        return (List<Filme>)query.getResultList();
     }
 
     @Override

@@ -45,7 +45,7 @@ public class SerieDAO implements GenericDAO<Serie> {
     @Override
     public List<Serie> read() {
         Query query = em.createNamedQuery("Serie.findAll");
-        return query.getResultList();
+        return (List<Serie>)query.getResultList();
     }
 
     @Override
