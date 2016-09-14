@@ -13,11 +13,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.EJBException;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -72,9 +70,22 @@ public class UserCommand implements Command {
         Usuario u = new Usuario();
         u.setIdUsuario(new Long(-1));
         u.setNomeUsuario(request.getParameter("nome_usuario"));
+
+        try {
+            usuarioDAO.readByName(u.getNomeUsuario());
+            // Caso não exista nenhum usuário com o nome escolhido, o método acima lançará uma excessão, impedindo a execução das linhas abaixo
+            responsePage = "error.jsp";
+            request.getSession().setAttribute("erro", "Nome de usuário já existente");
+            request.getSession().setAttribute("previousPage", "register.jsp");
+            return;
+        } catch (Exception ex) {
+            // Nome de usuário não existe e pode ser utilizado
+        }
+
         if (!request.getParameter("senha").equals(request.getParameter("senha2"))) {
             responsePage = "error.jsp";
-            request.setAttribute("erro", "Senhas não conferem!");
+            request.getSession().setAttribute("erro", "Senhas não conferem");
+            request.getSession().setAttribute("previousPage", "register.jsp");
             return;
         }
         u.setSenha(request.getParameter("senha"));
