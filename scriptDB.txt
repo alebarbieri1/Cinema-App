@@ -1,5 +1,5 @@
 CREATE TABLE usuario_info (
-id_usuarioinfo BIGINT PRIMARY KEY,
+id_usuarioinfo BIGINT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1,INCREMENT BY 1),
 nome VARCHAR(100),
 email VARCHAR(128),
 aniversario DATE,
@@ -54,10 +54,10 @@ nota DOUBLE,
 fans INTEGER
 );
 
-ALTER TABLE usuario_info ADD FOREIGN KEY(id_usuarioinfo) REFERENCES usuario (id_usuario);
-ALTER TABLE registro_filme ADD FOREIGN KEY(id_filme) REFERENCES filme (id_filme);
-ALTER TABLE registro_serie ADD FOREIGN KEY(id_serie) REFERENCES serie (id_serie);
-ALTER TABLE filme ADD FOREIGN KEY(sequencia) REFERENCES filme (id_filme);
-ALTER TABLE filme ADD FOREIGN KEY(anterior) REFERENCES filme (id_filme);
-ALTER TABLE serie ADD FOREIGN KEY(temporada_anterior) REFERENCES serie (id_serie);
-ALTER TABLE serie ADD FOREIGN KEY(temporada_seguinte) REFERENCES serie (id_serie);
+ALTER TABLE usuario_info ADD FOREIGN KEY(id_usuarioinfo) REFERENCES usuario (id_usuario) ON DELETE CASCADE;
+ALTER TABLE registro_filme ADD FOREIGN KEY(id_filme) REFERENCES filme (id_filme) ON DELETE CASCADE;
+ALTER TABLE registro_serie ADD FOREIGN KEY(id_serie) REFERENCES serie (id_serie) ON DELETE CASCADE;
+ALTER TABLE filme ADD FOREIGN KEY(sequencia) REFERENCES filme (id_filme) ON DELETE CASCADE;
+ALTER TABLE filme ADD FOREIGN KEY(anterior) REFERENCES filme (id_filme) ON DELETE CASCADE;
+ALTER TABLE serie ADD FOREIGN KEY(temporada_anterior) REFERENCES serie (id_serie) ON DELETE CASCADE;
+ALTER TABLE serie ADD FOREIGN KEY(temporada_seguinte) REFERENCES serie (id_serie) ON DELETE CASCADE;

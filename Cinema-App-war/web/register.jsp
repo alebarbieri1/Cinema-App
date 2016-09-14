@@ -44,7 +44,7 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="usuario" type="text" name="usuario" class="validate" required="required">
+                                <input id="usuario" type="text" name="nome_usuario" class="validate" required="required">
                                 <label class="active" for="usuario">Usuário</label>
                             </div>
                             <div class="input-field col s6">
@@ -54,12 +54,12 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="password1" type="password" class="validate" name="password" required="required">
-                                <label class="active" for="password1">Password</label>
+                                <input id="senha" type="password" class="validate" name="senha" required="required">
+                                <label class="active" for="senha">Password</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="password2" type="password" class="validate" name="password2" required="required">
-                                <label class="active" for="password2">Confirm password</label>
+                                <input id="senha2" type="password" class="validate" name="senha2" required="required">
+                                <label class="active" for="senha2">Confirm password</label>
                             </div>
                         </div>
                         <div class="center-align">

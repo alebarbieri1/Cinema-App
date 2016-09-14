@@ -30,14 +30,14 @@
                         <div class="row">
                             <div class="input-field col s12 valign">
                                 <i class="material-icons prefix">account_circle</i>
-                                <input id="usuario" type="text" class="validate " required="required">
+                                <input id="usuario" type="text" class="validate " required="required" name="nome_usuario">
                                 <label class="active" for="usuario">Usuário</label>
                             </div>
                         </div>  
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">lock</i>
-                                <input id="senha" type="password" class="validate" required="required">
+                                <input id="senha" type="password" class="validate" required="required" name="senha">
                                 <label class="active" for="senha">Senha</label>
                             </div>
                         </div>

@@ -3,17 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/src/java/com/br/cinema/controller/command/UserCommand.java</file>
             <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/src/java/com/br/cinema/controller/Controller.java</file>
+            <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/web/home.jsp</file>
+            <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/web/register.jsp</file>
+            <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/web/javascript/javaScript.js</file>
             <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/src/java/com/br/cinema/controller/command/PageCommand.java</file>
-=======
-            <file>file:/Users/victoroka/GitHub/Cinema-App/Cinema-App-war/web/index.jsp</file>
-            <file>file:/Users/victoroka/GitHub/Cinema-App/Cinema-App-war/web/register.jsp</file>
-            <file>file:/Users/victoroka/GitHub/Cinema-App/Cinema-App-war/web/materialize/css/materialize.css</file>
-            <file>file:/Users/victoroka/GitHub/Cinema-App/Cinema-App-war/web/css/estilo.css</file>
-            <file>file:/Users/victoroka/GitHub/Cinema-App/Cinema-App-war/web/home.jsp</file>
->>>>>>> origin/master
+            <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/web/error.jsp</file>
+            <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/web/index.jsp</file>
         </group>
     </open-files>
 </project-private>

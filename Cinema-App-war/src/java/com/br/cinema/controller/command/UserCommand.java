@@ -13,9 +13,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.EJBException;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -56,40 +58,52 @@ public class UserCommand implements Command {
     private void register() {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        
+
         UsuarioInfo ui = new UsuarioInfo();
         try {
-            ui.setAniversario(sdf.parse(request.getParameter("aniversario")));
+            ui.setAniversario((sdf.parse(request.getParameter("aniversario"))));
         } catch (ParseException ex) {
             ui.setAniversario(new Date());
         }
         ui.setAssistindo(0);
         ui.setCompletos(0);
         ui.setEmail(request.getParameter("email"));
-        //ui.setNome(request.getParameter("first_name") + " " + request.getParameter("last_name"));
-        ui.setNome(request.getParameter("first_name"));
+        ui.setNome(request.getParameter("first_name") + " " + request.getParameter("last_name"));
         Usuario u = new Usuario();
-        u.setNomeUsuario(request.getParameter("username"));
-        u.setSenha(request.getParameter("password"));
+        u.setIdUsuario(new Long(-1));
+        u.setNomeUsuario(request.getParameter("nome_usuario"));
+        if (!request.getParameter("senha").equals(request.getParameter("senha2"))) {
+            responsePage = "error.jsp";
+            request.setAttribute("erro", "Senhas não conferem!");
+            return;
+        }
+        u.setSenha(request.getParameter("senha"));
         ui.setUsuario(u);
         u.setUsuarioInfo(ui);
-        
+
         usuarioDAO.create(u);
         responsePage = "index.jsp";
     }
 
     private void login() {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        Usuario temp = usuarioDAO.readByName(username);
-        if (temp == null) {
+        Usuario temp;
+        String username = request.getParameter("nome_usuario");
+        String password = request.getParameter("senha");
+        try {
+            temp = usuarioDAO.readByName(username);
+        } catch (Exception ex) {
+            // Não encontrou nenhum usuário
             responsePage = "error.jsp";
-            request.getSession().setAttribute("error", "Usuario não encontrado");
-        } else if (!password.equals(temp.getSenha())) {
+            request.getSession().setAttribute("erro", "Usuário não encontrado");
+            request.getSession().setAttribute("previousPage", "index.jsp");
+            return;
+        }
+        if (!password.equals(temp.getSenha())) {
             responsePage = "error.jsp";
-            request.getSession().setAttribute("error", "Senha incorreta");
+            request.getSession().setAttribute("erro", "Senha incorreta");
+            request.getSession().setAttribute("previousPage", "index.jsp");
         } else {
-            request.getSession().setAttribute("user", temp);
+            request.getSession().setAttribute("usuario", temp);
             request.getSession().setAttribute("page", "home");
             responsePage = "home.jsp";
         }
@@ -115,4 +129,5 @@ public class UserCommand implements Command {
             throw new RuntimeException(ne);
         }
     }
+
 }

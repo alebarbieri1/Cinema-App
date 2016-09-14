@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author victoroka
+ * @author Alexandre Barbieri
  */
 @Entity
 @Table(name = "REGISTRO_SERIE")

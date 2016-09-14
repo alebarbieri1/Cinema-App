@@ -1,16 +1,15 @@
 <%-- 
-    Document   : home
-    Created on : 07/09/2016, 12:32:17
+    Document   : error
+    Created on : 14/09/2016, 11:43:59
     Author     : Alexandre Barbieri
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home</title>
+        <title>Erro</title>
         <!-- Materialize CSS -->
         <link href="materialize/css/materialize.css" rel="stylesheet" type="text/css"/>
         <!-- Materialize JS -->
@@ -20,10 +19,7 @@
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     </head>
     <body>
-        <c:if test="${usuario == null}">
-            <c:redirect url="index.jsp"></c:redirect>
-        </c:if>
-        <h1>Bem vindo ${user.usuarioInfo.nome}!</h1>
-        <a href="Controller?command=User.logout">Clique aqui para sair</a>
+        <h5 class="card-panel red white-text">Erro - ${erro}!</h5>
+        <a href="${previousPage}">Clique aqui para voltar</a>
     </body>
 </html>
