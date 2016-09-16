@@ -71,15 +71,13 @@ public class UserCommand implements Command {
         u.setIdUsuario(new Long(-1));
         u.setNomeUsuario(request.getParameter("nome_usuario"));
 
-        try {
-            usuarioDAO.readByName(u.getNomeUsuario());
+        //Verificar se nomede usuario ja existe
+        if (usuarioDAO.readByName(u.getNomeUsuario()) != null) {
             // Caso não exista nenhum usuário com o nome escolhido, o método acima lançará uma excessão, impedindo a execução das linhas abaixo
             responsePage = "error.jsp";
             request.getSession().setAttribute("erro", "Nome de usuário já existente");
             request.getSession().setAttribute("previousPage", "register.jsp");
             return;
-        } catch (Exception ex) {
-            // Nome de usuário não existe e pode ser utilizado
         }
 
         if (!request.getParameter("senha").equals(request.getParameter("senha2"))) {
