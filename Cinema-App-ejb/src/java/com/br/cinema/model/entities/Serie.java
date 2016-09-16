@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Alexandre Barbieri
+ * @author VictorOka
  */
 @Entity
 @Table(name = "SERIE")

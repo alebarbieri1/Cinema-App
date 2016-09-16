@@ -7,3 +7,5 @@
 /nbproject/private/*
 /db/*
 *.DS_Store
+/Cinema-App-war/nbproject/private/
+/Cinema-App-ejb/nbproject/private/
