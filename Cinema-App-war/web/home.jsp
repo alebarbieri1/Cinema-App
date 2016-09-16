@@ -12,18 +12,27 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home</title>
         <!-- Materialize CSS -->
-        <link href="materialize/css/materialize.css" rel="stylesheet" type="text/css"/>
+        <link href="materialize/css/materialize.min.css" rel="stylesheet" type="text/css"/>
+        <!-- jQuery -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <!-- Materialize JS -->
-        <script src="materialize/js/materialize.js" type="text/javascript"></script>
-        <!-- jQuery 3.x -->
-        <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+        <!-- Google Icons -->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <!-- CSS -->
+        <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
+        <!-- JavaScript -->
+        <script src="javascript/javaScript.js" type="text/javascript"></script>
     </head>
     <body>
-        <c:if test="${usuario == null}">
-            <c:redirect url="index.jsp"></c:redirect>
-        </c:if>
-        <h1>Bem vindo ${usuario.usuarioInfo.nome}!</h1>
-        <a href="Controller?command=User.logout">Clique aqui para sair</a>
+        <div class="container">
+            <div class="">
+                <c:if test="${usuario == null}">
+                    <c:redirect url="index.jsp"></c:redirect>
+                </c:if>
+                <h1>Bem vindo ${usuario.usuarioInfo.nome}!</h1>
+                <a href="Controller?command=User.logout">Clique aqui para sair</a>
+            </div>
+        </div>
     </body>
 </html>

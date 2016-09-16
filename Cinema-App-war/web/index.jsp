@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : 31/08/2016, 23:04:44
-    Author     : SPSILVA
+    Author     : Victor Oka
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,19 +9,23 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Index</title>
+        <title>Login</title>
         <!-- Materialize CSS -->
-        <link href="materialize/css/materialize.css" rel="stylesheet" type="text/css"/>
+        <link href="materialize/css/materialize.min.css" rel="stylesheet" type="text/css"/>
+        <!-- jQuery -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <!-- Materialize JS -->
-        <script src="materialize/js/materialize.js" type="text/javascript"></script>
-        <!-- jQuery 3.x -->
-        <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+        <!-- Google Icons -->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <!-- CSS -->
         <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
+        <!-- JavaScript -->
+        <script src="javascript/javaScript.js" type="text/javascript"></script>
     </head>
     <body>
         <div class="container">
-            <div class="col s12 z-depth-4 card-panel">
+            <div class="col s12 z-depth-4 card-panel" style="background-color: #D3CEAA;">
                 <h3 class="center-align">Login</h3>
                 <div class="row valign-wrapper">
                     <div class="col s4"></div>
@@ -44,7 +48,7 @@
                         <div class="row">
                             <div class="col s12">
                                 <div class="center-align">
-                                    <button class="btn waves-effect waves-light" type="submit" name="action">Entrar
+                                    <button class="btn waves-effect waves-light" type="submit" name="action" style="background-color: #8E001C; color: #D3CEAA">Entrar
                                         <i class="material-icons right">send</i>
                                     </button>
                                 </div>

@@ -1,7 +1,7 @@
 <%-- 
     Document   : register
     Created on : Sep 12, 2016, 4:16:11 PM
-    Author     : victoroka
+    Author     : Victor Oka
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,16 +12,20 @@
         <title>Register</title>
         <!-- Materialize CSS -->
         <link href="materialize/css/materialize.min.css" rel="stylesheet" type="text/css"/>
-        <!-- Materialize JS -->
+        <!-- jQuery -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <!-- Materialize JS -->
         <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+        <!-- Google Icons -->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <!-- CSS -->
         <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
+        <!-- JavaScript -->
         <script src="javascript/javaScript.js" type="text/javascript"></script>
     </head>
     <body>
         <div class="container">
-            <div class="col s12 z-depth-4 card-panel">
+            <div class="col s12 z-depth-4 card-panel" style="background-color: #D3CEAA;">
                 <h3 class="center-align">Create an account</h3>
                 <div class="row">
                     <form action="Controller" method="POST" class="col s12">
@@ -63,7 +67,7 @@
                             </div>
                         </div>
                         <div class="center-align">
-                            <button class="waves-effect waves-light btn" type="submit" name="action">
+                            <button class="waves-effect waves-light btn" type="submit" name="action" style="background-color: #8E001C; color: #D3CEAA">
                                 <i class="material-icons right">done</i>
                                 Register
                             </button>
