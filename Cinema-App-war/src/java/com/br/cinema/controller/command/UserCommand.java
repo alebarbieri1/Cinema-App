@@ -98,9 +98,10 @@ public class UserCommand implements Command {
         Usuario temp;
         String username = request.getParameter("nome_usuario");
         String password = request.getParameter("senha");
-        try {
-            temp = usuarioDAO.readByName(username);
-        } catch (Exception ex) {
+
+        temp = usuarioDAO.readByName(username);
+        if (temp == null) {
+
             // Não encontrou nenhum usuário
             responsePage = "error.jsp";
             request.getSession().setAttribute("erro", "Usuário não encontrado");
