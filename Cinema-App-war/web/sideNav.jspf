@@ -12,4 +12,4 @@
     <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
 </ul>
 <a href="#" data-activates="slide-out" class="btn waves-effect waves-light button-collapse" 
-   style="background-color: #D3CEAA; color: #424242;"><i class="material-icons">menu</i></a>
+   onclick="Materialize.showStaggeredList('#slide-out')" style="background-color: #D3CEAA; color: #424242;"><i class="material-icons">menu</i></a>
