@@ -30,6 +30,7 @@
                 <c:if test="${usuario == null}">
                     <c:redirect url="index.jsp"></c:redirect>
                 </c:if>
+                <c:import url="sideNav.jspf"></c:import>
                 <h1>Bem vindo ${usuario.usuarioInfo.nome}!</h1>
                 <a href="Controller?command=User.logout">Clique aqui para sair</a>
             </div>

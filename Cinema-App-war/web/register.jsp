@@ -33,37 +33,37 @@
                         <div class="row">
                             <div class="input-field col s6">
                                 <input id="first_name" name="first_name" type="text" required="required">
-                                <label class="active" for="first_name">First Name</label>
+                                <label class="active" for="first_name"><b>First Name</b></label>
                             </div>
                             <div class="input-field col s6">
                                 <input id="last_name" type="text" name="last_name" class="validate" required="required">
-                                <label class="active" for="last_name">Last Name</label>
+                                <label class="active" for="last_name"><b>Last Name</b></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <input id="email" type="email" name="email" class="validate" required="required">
-                                <label class="active" for="email">Email</label>
+                                <label class="active" for="email"><b>Email</b></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
                                 <input id="usuario" type="text" name="nome_usuario" class="validate" required="required">
-                                <label class="active" for="usuario">Usuário</label>
+                                <label class="active" for="usuario"><b>Usuário</b></label>
                             </div>
                             <div class="input-field col s6">
                                 <input id="aniversario" type="date" name="aniversario" required="required">
-                                <label class="active" for="dataNascimento">Data Nascimento</label>
+                                <label class="active" for="dataNascimento"><b>Data&nbsp;Nascimento</b></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
                                 <input id="senha" type="password" class="validate" name="senha" required="required">
-                                <label class="active" for="senha">Password</label>
+                                <label class="active" for="senha"><b>Password</b></label>
                             </div>
                             <div class="input-field col s6">
                                 <input id="senha2" type="password" class="validate" name="senha2" required="required">
-                                <label class="active" for="senha2">Confirm password</label>
+                                <label class="active" for="senha2"><b>Confirm&nbsp;password</b></label>
                             </div>
                         </div>
                         <div class="center-align">
