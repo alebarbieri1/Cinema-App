@@ -26,13 +26,24 @@
     </head>
     <body>
         <div class="container">
-            <div class="">
+            <div>
                 <c:if test="${usuario == null}">
                     <c:redirect url="index.jsp"></c:redirect>
                 </c:if>
-                <c:import url="sideNav.jspf"></c:import>
+                <%@include file="sideNav.jspf"%>
+                <nav>
+                    <div class="navbar-wrapper">
+                        <a href="#" class="brand-logo right">Logo</a>
+                        <ul id="nav-mobile" class="left hide-on-med-and-down">
+                            <li><a href="Controller?command=User.logout">Logout</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <a href="#" data-activates="slide-out" class="btn waves-effect light button-collapse" 
+                   onclick="Materialize.showStaggeredList('#slide-out')" style="background-color: #D3CEAA; color: #424242;">
+                    <i class="material-icons show-on-large">menu</i>
+                </a>
                 <h1>Bem vindo ${usuario.usuarioInfo.nome}!</h1>
-                <a href="Controller?command=User.logout">Clique aqui para sair</a>
             </div>
         </div>
     </body>
