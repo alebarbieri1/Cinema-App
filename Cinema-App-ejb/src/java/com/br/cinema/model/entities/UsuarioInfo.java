@@ -20,12 +20,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author VictorOka
+ * @author victoroka
  */
 @Entity
 @Table(name = "USUARIO_INFO")
@@ -46,11 +45,8 @@ public class UsuarioInfo implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_USUARIOINFO")
     private Long idUsuarioinfo;
-    @Size(max = 100)
     @Column(name = "NOME")
     private String nome;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @Size(max = 128)
     @Column(name = "EMAIL")
     private String email;
     @Column(name = "ANIVERSARIO")

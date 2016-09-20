@@ -20,12 +20,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author VictorOka
+ * @author victoroka
  */
 @Entity
 @Table(name = "REGISTRO_SERIE")
@@ -46,7 +45,6 @@ public class RegistroSerie implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_REGISTRO_SERIE")
     private Long idRegistroSerie;
-    @Size(max = 32)
     @Column(name = "STATUS")
     private String status;
     @Column(name = "DATA_INICIO")

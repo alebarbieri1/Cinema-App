@@ -20,12 +20,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author VictorOka
+ * @author victoroka
  */
 @Entity
 @Table(name = "REGISTRO_FILME")
@@ -44,7 +43,6 @@ public class RegistroFilme implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_REGISTRO_FILME")
     private Long idRegistroFilme;
-    @Size(max = 32)
     @Column(name = "STATUS")
     private String status;
     @Column(name = "DATA_ASSISTIDO")

@@ -23,7 +23,7 @@
         <!-- JavaScript -->
         <script src="javascript/javaScript.js" type="text/javascript"></script>
     </head>
-    <body>
+    <body class="cartao">
         <div class="container">
             <div class="col s12 z-depth-4 card-panel" style="background-color: #D3CEAA;">
                 <h3 class="center-align">Create an account</h3>

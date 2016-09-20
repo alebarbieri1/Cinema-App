@@ -19,13 +19,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author VictorOka
+ * @author victoroka
  */
 @Entity
 @Table(name = "USUARIO")
@@ -43,10 +42,8 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_USUARIO")
     private Long idUsuario;
-    @Size(max = 100)
     @Column(name = "NOME_USUARIO")
     private String nomeUsuario;
-    @Size(max = 64)
     @Column(name = "SENHA")
     private String senha;
     @OneToMany(mappedBy = "idUsuario")
