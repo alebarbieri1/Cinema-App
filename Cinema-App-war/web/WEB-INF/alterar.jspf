@@ -1,0 +1,38 @@
+<div class="col s12 z-depth-4 card-panel" style="background-color: #D3CEAA;">
+    <h3 class="center-align">Editar Perfil</h3>
+    <div class="row">
+        <form action="Controller" method="POST" class="col s12">
+            <input type="hidden" name="command" value="User.update">
+            <input type="hidden" name="id" value="${usuario.idUsuario}">
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="first_name" name="name" type="text" value="${usuario.usuarioInfo.nome}" required="required">
+                    <label class="active" for="first_name"><b>Nome</b></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" type="email" name="email" value="${usuario.usuarioInfo.email}" class="validate" required="required">
+                    <label class="active" for="email"><b>Email</b></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="usuario" type="text" name="nome_usuario" value="${usuario.nomeUsuario}" class="validate" required="required">
+                    <label class="active" for="usuario"><b>Usuário</b></label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="aniversario" type="date" name="aniversario" required="required">
+                    <label class="active" for="dataNascimento"><b>Data&nbsp;Nascimento</b></label>
+                </div>
+            </div>
+            <div class="center-align">
+                <button class="waves-effect waves-light btn" type="submit" name="action" style="background-color: #8E001C; color: #D3CEAA">
+                    <i class="material-icons right">done</i>
+                    Enviar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
