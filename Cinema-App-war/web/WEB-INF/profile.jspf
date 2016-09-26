@@ -3,4 +3,5 @@
 <p>Assistindo: ${usuario.usuarioInfo.assistindo}</p>
 <p>Completos: ${usuario.usuarioInfo.completos}</p>
 <a href="Controller?command=Page.alterar"><button>Editar</button></a>
+<a href="Controller?command=Page.alterar_senha"><button>Alterar Senha</button></a>
 

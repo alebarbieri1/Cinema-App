@@ -1,0 +1,23 @@
+<div class="col s12 z-depth-4 card-panel" style="background-color: #D3CEAA;">
+    <h3 class="center-align">Alterar Senha</h3>
+    <div class="row">
+        <form action="Controller" method="POST" class="col s12">
+            <input type="hidden" name="command" value="User.update_senha">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="senha" type="password" class="validate" name="senha" required="required">
+                    <label class="active" for="senha"><b>Password</b></label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="senha2" type="password" class="validate" name="senha2" required="required">
+                    <label class="active" for="senha2"><b>Confirm&nbsp;password</b></label>
+                </div>
+            </div>
+            <div class="center-align">
+                <button class="waves-effect waves-light btn" type="submit" name="action" style="background-color: #8E001C; color: #D3CEAA">
+                    <i class="material-icons right">done</i>
+                    Enviar
+                </button>
+            </div>
+        </form>
+    </div>

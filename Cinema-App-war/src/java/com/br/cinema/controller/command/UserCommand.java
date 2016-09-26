@@ -24,19 +24,19 @@ import javax.servlet.http.HttpServletResponse;
  * @author Alexandre Barbieri
  */
 public class UserCommand implements Command {
-
+    
     UsuarioDAO usuarioDAO = lookupUsuarioDAOBean();
-
+    
     private HttpServletRequest request;
     private HttpServletResponse response;
     private String responsePage;
-
+    
     @Override
     public void init(HttpServletRequest request, HttpServletResponse response) {
         this.request = request;
         this.response = response;
     }
-
+    
     @Override
     public void execute() {
         String action = request.getParameter("command").split("\\.")[1];
@@ -53,22 +53,26 @@ public class UserCommand implements Command {
             case "update":
                 update();
                 break;
+            case "update_senha":
+                updateSenha();
+                break;
         }
     }
-
+    
     private void update() {
         Usuario u = usuarioDAO.readById(Long.parseLong(request.getParameter("id")));
-
+        
         if (!u.getNomeUsuario().equals(request.getParameter("nome_usuario")) && (usuarioDAO.readByName(request.getParameter("nome_usuario")) != null)) {
             // Caso não exista nenhum usuário com o nome escolhido, o método acima lançará uma excessão, impedindo a execução das linhas abaixo
             responsePage = "error.jsp";
             request.getSession().setAttribute("erro", "Nome de usuário já existente");
-            request.getSession().setAttribute("previousPage", "register.jsp");
+            request.getSession().setAttribute("page", "perfil");
+            request.getSession().setAttribute("previousPage", "home.jsp");
             return;
         }
-
+        
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
+        
         UsuarioInfo ui = u.getUsuarioInfo();
         try {
             ui.setAniversario((sdf.parse(request.getParameter("aniversario"))));
@@ -85,11 +89,27 @@ public class UserCommand implements Command {
         request.getSession().setAttribute("usuario", u);
         responsePage = "home.jsp";
     }
-
+    
+    private void updateSenha() {
+        Usuario u = (Usuario) request.getSession().getAttribute("usuario");
+        if (!request.getParameter("senha").equals(request.getParameter("senha2"))) {
+            responsePage = "error.jsp";
+            request.getSession().setAttribute("erro", "Senhas não conferem");
+            request.getSession().setAttribute("page", "perfil");
+            request.getSession().setAttribute("previousPage", "home.jsp");
+            return;
+        }
+        u.setSenha(request.getParameter("senha"));
+        usuarioDAO.update(u);
+        request.getSession().setAttribute("page", "perfil");
+        request.getSession().setAttribute("usuario", u);
+        responsePage = "home.jsp";
+    }
+    
     private void register() {
-
+        
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
+        
         UsuarioInfo ui = new UsuarioInfo();
         try {
             ui.setAniversario((sdf.parse(request.getParameter("aniversario"))));
@@ -111,7 +131,7 @@ public class UserCommand implements Command {
             request.getSession().setAttribute("previousPage", "register.jsp");
             return;
         }
-
+        
         if (!request.getParameter("senha").equals(request.getParameter("senha2"))) {
             responsePage = "error.jsp";
             request.getSession().setAttribute("erro", "Senhas não conferem");
@@ -121,16 +141,16 @@ public class UserCommand implements Command {
         u.setSenha(request.getParameter("senha"));
         ui.setUsuario(u);
         u.setUsuarioInfo(ui);
-
+        
         usuarioDAO.create(u);
         responsePage = "index.jsp";
     }
-
+    
     private void login() {
         Usuario temp;
         String username = request.getParameter("nome_usuario");
         String password = request.getParameter("senha");
-
+        
         temp = usuarioDAO.readByName(username);
         if (temp == null) {
 
@@ -146,22 +166,22 @@ public class UserCommand implements Command {
             request.getSession().setAttribute("previousPage", "index.jsp");
         } else {
             request.getSession().setAttribute("usuario", temp);
-            request.getSession().setAttribute("page", "home");
+            request.getSession().setAttribute("page", "bemvindo");
             responsePage = "home.jsp";
         }
-
+        
     }
-
+    
     private void logout() {
         request.getSession().invalidate();
         responsePage = "index.jsp";
     }
-
+    
     @Override
     public String getResponsePage() {
         return this.responsePage;
     }
-
+    
     private UsuarioDAO lookupUsuarioDAOBean() {
         try {
             Context c = new InitialContext();
@@ -171,5 +191,5 @@ public class UserCommand implements Command {
             throw new RuntimeException(ne);
         }
     }
-
+    
 }

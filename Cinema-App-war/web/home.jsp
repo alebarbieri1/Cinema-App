@@ -53,8 +53,11 @@
                     <c:redirect url="index.jsp"></c:redirect>
                 </c:if>
                 <%@include file="WEB-INF/sideNav.jspf"%>
-                <h1>Bem vindo ${usuario.usuarioInfo.nome}!</h1>
                 <c:choose>
+                     <c:when test="${page.equals('bemvindo')}">
+                    <h1>Bem vindo ${usuario.usuarioInfo.nome}!</h1>
+                    </c:when>
+
                     <c:when test="${page.equals('perfil')}">
                         <h2>Perfil</h2>
                         <%@include file="WEB-INF/profile.jspf"%> 
@@ -62,6 +65,9 @@
                     <c:when test="${page.equals('alterar')}">
                         <h2>Perfil</h2>
                         <%@include file="WEB-INF/alterar.jspf"%> 
+                    </c:when>
+                    <c:when test="${page.equals('alterar_senha')}">
+                        <%@include file="WEB-INF/senha.jspf"%> 
                     </c:when>
                 </c:choose>
             </div>
