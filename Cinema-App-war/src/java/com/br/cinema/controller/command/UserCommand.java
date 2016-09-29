@@ -24,25 +24,28 @@ import javax.servlet.http.HttpServletResponse;
  * @author Alexandre Barbieri
  */
 public class UserCommand implements Command {
-    
+
     UsuarioDAO usuarioDAO = lookupUsuarioDAOBean();
-    
+
     private HttpServletRequest request;
     private HttpServletResponse response;
     private String responsePage;
-    
+
     @Override
     public void init(HttpServletRequest request, HttpServletResponse response) {
         this.request = request;
         this.response = response;
     }
-    
+
     @Override
     public void execute() {
         String action = request.getParameter("command").split("\\.")[1];
         switch (action) {
             case "register":
                 register();
+                break;
+            case "listarP":
+                listarP();
                 break;
             case "login":
                 login();
@@ -53,15 +56,24 @@ public class UserCommand implements Command {
             case "update":
                 update();
                 break;
+            case "deletar":
+                remover();
+                break;
             case "update_senha":
                 updateSenha();
                 break;
         }
     }
-    
+
+    private void remover() {
+        long id = Long.parseLong(request.getParameter("id"));
+        usuarioDAO.delete(usuarioDAO.readById(id));
+        listarP();
+    }
+
     private void update() {
         Usuario u = usuarioDAO.readById(Long.parseLong(request.getParameter("id")));
-        
+
         if (!u.getNomeUsuario().equals(request.getParameter("nome_usuario")) && (usuarioDAO.readByName(request.getParameter("nome_usuario")) != null)) {
             // Caso não exista nenhum usuário com o nome escolhido, o método acima lançará uma excessão, impedindo a execução das linhas abaixo
             responsePage = "error.jsp";
@@ -70,9 +82,9 @@ public class UserCommand implements Command {
             request.getSession().setAttribute("previousPage", "home.jsp");
             return;
         }
-        
+
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        
+
         UsuarioInfo ui = u.getUsuarioInfo();
         try {
             ui.setAniversario((sdf.parse(request.getParameter("aniversario"))));
@@ -89,7 +101,13 @@ public class UserCommand implements Command {
         request.getSession().setAttribute("usuario", u);
         responsePage = "home.jsp";
     }
-    
+
+    private void listarP() {
+        request.getSession().setAttribute("usuarios", usuarioDAO.read());
+        request.getSession().setAttribute("page", "painel");
+        responsePage = "home.jsp";
+    }
+
     private void updateSenha() {
         Usuario u = (Usuario) request.getSession().getAttribute("usuario");
         if (!request.getParameter("senha").equals(request.getParameter("senha2"))) {
@@ -105,11 +123,11 @@ public class UserCommand implements Command {
         request.getSession().setAttribute("usuario", u);
         responsePage = "home.jsp";
     }
-    
+
     private void register() {
-        
+
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        
+
         UsuarioInfo ui = new UsuarioInfo();
         try {
             ui.setAniversario((sdf.parse(request.getParameter("aniversario"))));
@@ -122,7 +140,7 @@ public class UserCommand implements Command {
         ui.setNome(request.getParameter("first_name") + " " + request.getParameter("last_name"));
         Usuario u = new Usuario();
         u.setNomeUsuario(request.getParameter("nome_usuario"));
-
+        u.setAcesso(0);
         //Verificar se nome de usuario ja existe
         if (usuarioDAO.readByName(u.getNomeUsuario()) != null) {
             // Caso não exista nenhum usuário com o nome escolhido, o método acima lançará uma excessão, impedindo a execução das linhas abaixo
@@ -131,7 +149,7 @@ public class UserCommand implements Command {
             request.getSession().setAttribute("previousPage", "register.jsp");
             return;
         }
-        
+
         if (!request.getParameter("senha").equals(request.getParameter("senha2"))) {
             responsePage = "error.jsp";
             request.getSession().setAttribute("erro", "Senhas não conferem");
@@ -141,16 +159,16 @@ public class UserCommand implements Command {
         u.setSenha(request.getParameter("senha"));
         ui.setUsuario(u);
         u.setUsuarioInfo(ui);
-        
+
         usuarioDAO.create(u);
         responsePage = "index.jsp";
     }
-    
+
     private void login() {
         Usuario temp;
         String username = request.getParameter("nome_usuario");
         String password = request.getParameter("senha");
-        
+
         temp = usuarioDAO.readByName(username);
         if (temp == null) {
 
@@ -169,19 +187,19 @@ public class UserCommand implements Command {
             request.getSession().setAttribute("page", "bemvindo");
             responsePage = "home.jsp";
         }
-        
+
     }
-    
+
     private void logout() {
         request.getSession().invalidate();
         responsePage = "index.jsp";
     }
-    
+
     @Override
     public String getResponsePage() {
         return this.responsePage;
     }
-    
+
     private UsuarioDAO lookupUsuarioDAOBean() {
         try {
             Context c = new InitialContext();
@@ -191,5 +209,5 @@ public class UserCommand implements Command {
             throw new RuntimeException(ne);
         }
     }
-    
+
 }

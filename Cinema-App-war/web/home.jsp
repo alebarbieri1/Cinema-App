@@ -54,13 +54,17 @@
                 </c:if>
                 <%@include file="WEB-INF/sideNav.jspf"%>
                 <c:choose>
-                     <c:when test="${page.equals('bemvindo')}">
-                    <h1>Bem vindo ${usuario.usuarioInfo.nome}!</h1>
+                    <c:when test="${page.equals('bemvindo')}">
+                        <h1>Bem vindo ${usuario.usuarioInfo.nome}!</h1>
                     </c:when>
 
                     <c:when test="${page.equals('perfil')}">
                         <h2>Perfil</h2>
                         <%@include file="WEB-INF/profile.jspf"%> 
+                    </c:when>
+                    <c:when test="${page.equals('painel')}">
+                        <h2>Painel</h2>
+                        <%@include file="WEB-INF/painel.jspf"%> 
                     </c:when>
                     <c:when test="${page.equals('alterar')}">
                         <h2>Perfil</h2>

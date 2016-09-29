@@ -21,7 +21,7 @@ import javax.persistence.Query;
 @LocalBean
 @Stateful
 public class SerieDAO implements GenericDAO<Serie> {
-    
+
     @PersistenceContext(unitName = "CinemaApp-ejbPU",
             type = PersistenceContextType.TRANSACTION)
     private EntityManager em;
@@ -38,14 +38,14 @@ public class SerieDAO implements GenericDAO<Serie> {
 
     @Override
     public void delete(Serie e) {
-        em.merge(e);
-        em.remove(e);
+        em.remove(em.merge(e));
+
     }
 
     @Override
     public List<Serie> read() {
         Query query = em.createNamedQuery("Serie.findAll");
-        return (List<Serie>)query.getResultList();
+        return (List<Serie>) query.getResultList();
     }
 
     @Override
@@ -54,5 +54,3 @@ public class SerieDAO implements GenericDAO<Serie> {
     }
 
 }
-
-

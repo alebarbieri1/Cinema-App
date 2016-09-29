@@ -19,12 +19,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author victoroka
+ * @author Prog Felipe
  */
 @Entity
 @Table(name = "SERIE")
@@ -44,6 +45,7 @@ public class Serie implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_SERIE")
     private Long idSerie;
+    @Size(max = 100)
     @Column(name = "NOME_SERIE")
     private String nomeSerie;
     @Column(name = "EPISODIOS")

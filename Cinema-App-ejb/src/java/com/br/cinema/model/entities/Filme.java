@@ -19,12 +19,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author victoroka
+ * @author Prog Felipe
  */
 @Entity
 @Table(name = "FILME")
@@ -43,6 +44,7 @@ public class Filme implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_FILME")
     private Long idFilme;
+    @Size(max = 100)
     @Column(name = "NOME_FILME")
     private String nomeFilme;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation

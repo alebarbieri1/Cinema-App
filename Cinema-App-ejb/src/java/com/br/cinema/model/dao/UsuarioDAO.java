@@ -38,8 +38,8 @@ public class UsuarioDAO implements GenericDAO<Usuario> {
 
     @Override
     public void delete(Usuario e) {
-        em.merge(e);
-        em.remove(e);
+        em.remove(em.merge(e));
+
     }
 
     @Override
