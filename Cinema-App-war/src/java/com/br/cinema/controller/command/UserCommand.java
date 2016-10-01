@@ -73,9 +73,8 @@ public class UserCommand implements Command {
 
     private void update() {
         Usuario u = usuarioDAO.readById(Long.parseLong(request.getParameter("id")));
-
+        //Verificar se nome de usuario ja existe
         if (!u.getNomeUsuario().equals(request.getParameter("nome_usuario")) && (usuarioDAO.readByName(request.getParameter("nome_usuario")) != null)) {
-            // Caso não exista nenhum usuário com o nome escolhido, o método acima lançará uma excessão, impedindo a execução das linhas abaixo
             responsePage = "error.jsp";
             request.getSession().setAttribute("erro", "Nome de usuário já existente");
             request.getSession().setAttribute("page", "perfil");
@@ -86,16 +85,10 @@ public class UserCommand implements Command {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         UsuarioInfo ui = u.getUsuarioInfo();
-        try {
-            ui.setAniversario((sdf.parse(request.getParameter("aniversario"))));
-        } catch (ParseException ex) {
-            ui.setAniversario(new Date());
-        }
         ui.setEmail(request.getParameter("email"));
         ui.setNome(request.getParameter("name"));
         u.setNomeUsuario(request.getParameter("nome_usuario"));
 
-        //Verificar se nome de usuario ja existe
         usuarioDAO.update(u);
         request.getSession().setAttribute("page", "perfil");
         request.getSession().setAttribute("usuario", u);
@@ -209,5 +202,6 @@ public class UserCommand implements Command {
             throw new RuntimeException(ne);
         }
     }
+
 
 }

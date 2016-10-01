@@ -1,7 +1,9 @@
-<p>${usuario.usuarioInfo.nome}</p>
-<p>${usuario.usuarioInfo.aniversario}</p>
-<p>Assistindo: ${usuario.usuarioInfo.assistindo}</p>
-<p>Completos: ${usuario.usuarioInfo.completos}</p>
-<a href="Controller?command=Page.alterar"><button>Editar</button></a>
-<a href="Controller?command=Page.alterar_senha"><button>Alterar Senha</button></a>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<p><b>Nome: </b>${usuario.usuarioInfo.nome}</p>
+<b>Data de Nascimento: </b><fmt:formatDate type="date" value="${usuario.usuarioInfo.aniversario}"/>
+<p><b>Assistindo:</b> ${usuario.usuarioInfo.assistindo}</p>
+<p><b>Completos:</b> ${usuario.usuarioInfo.completos}</p>
+<a href="Controller?command=Page.alterar"><button style="color: #8E001C;">Editar</button></a>
+<a href="Controller?command=Page.alterar_senha"><button style="color: #8E001C;">Alterar Senha</button></a>
 

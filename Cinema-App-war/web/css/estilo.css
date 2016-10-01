@@ -26,3 +26,18 @@ html, body{
     justify-content: center;
     align-items: center;
 }
+
+table, td, th {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 3px;
+}
+
+th {
+    background-color: #8E001C;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #FBF7E4;
+}

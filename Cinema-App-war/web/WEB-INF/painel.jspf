@@ -1,21 +1,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <table id='painel_usuarios'>
     <thead>
         <tr>
-            <td>Nome</td>
-            <td>Aniversario</td>
-            <td>Assistindo</td>
-            <td>Completos</td>
-            <td></td>
+            <th>Nome</th>
+            <th>Aniversário</th>
+            <th>Assistindo</th>
+            <th>Completos</th>
+            <th style="text-align: center;"><i class="material-icons">delete</i></th>
         </tr>
     </thead>
     <c:forEach items="${usuarios}" var="u"> 
         <tr>
             <td>${u.usuarioInfo.nome}</td>
-            <td>${u.usuarioInfo.aniversario}</td>
+            <td><fmt:formatDate type="date" value="${u.usuarioInfo.aniversario}"/></td>
             <td>${u.usuarioInfo.assistindo}</td>
             <td>${u.usuarioInfo.completos}</td>
-            <td><a href="Controller?command=User.deletar&id=${u.idUsuario}"><button>Remover</button></a></td>
+            <td style="text-align: center;"><a href="Controller?command=User.deletar&id=${u.idUsuario}"><button style="color: #8E001C;">Remover</button></a></td>
         </tr>
     </c:forEach>
 </table>

@@ -10,7 +10,8 @@ assistindo INT
 CREATE TABLE usuario (
 id_usuario BIGINT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1,INCREMENT BY 1),
 nome_usuario VARCHAR(100),
-senha VARCHAR(64)
+senha VARCHAR(64),
+acesso integer
 );
 
 CREATE TABLE registro_filme (

@@ -37,7 +37,7 @@
                                 </i>
                             </a>
                         </div>
-                        <a href="#" class="brand-logo center">Logo</a>
+                        <a href="Controller?command=Page.bemvindo" class="brand-logo center">CinemaApp</a>
                         <ul id="nav-mobile" class="left hide-on-med-and-down">
                             <li>
 
@@ -55,19 +55,18 @@
                 <%@include file="WEB-INF/sideNav.jspf"%>
                 <c:choose>
                     <c:when test="${page.equals('bemvindo')}">
-                        <h1>Bem vindo ${usuario.usuarioInfo.nome}!</h1>
+                        <h4>Welcome, ${usuario.usuarioInfo.nome}!</h4>
                     </c:when>
 
                     <c:when test="${page.equals('perfil')}">
-                        <h2>Perfil</h2>
+                        <h4 style="text-decoration: underline;">Profile</h4>
                         <%@include file="WEB-INF/profile.jspf"%> 
                     </c:when>
                     <c:when test="${page.equals('painel')}">
-                        <h2>Painel</h2>
+                        <h4 style="text-decoration: underline;">Painel de Controle - Usuários Cadastrados</h4>
                         <%@include file="WEB-INF/painel.jspf"%> 
                     </c:when>
                     <c:when test="${page.equals('alterar')}">
-                        <h2>Perfil</h2>
                         <%@include file="WEB-INF/alterar.jspf"%> 
                     </c:when>
                     <c:when test="${page.equals('alterar_senha')}">

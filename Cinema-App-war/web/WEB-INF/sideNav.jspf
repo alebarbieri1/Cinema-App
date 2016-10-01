@@ -1,10 +1,10 @@
 <ul id="slide-out" class="side-nav">
     <li><div class="center-align"><i class="material-icons" style="font-size: 100px;">person_pin</i></div></li>
-    <li><a href="Controller?command=Page.perfil"><i class="material-icons">perm_identity</i>${usuario.usuarioInfo.nome}</a></li>
+    <li><a href="Controller?command=Page.perfil"><i class="material-icons">perm_identity</i>${usuario.usuarioInfo.nome} - Profile</a></li>
     <li><a href="#!"><i class="material-icons">email</i>${usuario.usuarioInfo.email}</a></li>
     <li><div class="divider"></div></li>
-    <li><a class="subheader">Subheader</a></li>
-    <c:if test="${usuario.acesso ==1}">
+    <li><a class="subheader">Configurações</a></li>
+    <c:if test="${usuario.acesso == 1}">
         <li><a class="waves-effect" href="Controller?command=User.listarP">Painel de Controle</a></li>
     </c:if>
     <li><a href="Controller?command=User.logout">Logout</a></li>
