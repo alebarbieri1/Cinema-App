@@ -17,7 +17,7 @@
             <td><fmt:formatDate type="date" value="${u.usuarioInfo.aniversario}"/></td>
             <td>${u.usuarioInfo.assistindo}</td>
             <td>${u.usuarioInfo.completos}</td>
-            <td style="text-align: center;"><a href="Controller?command=User.deletar&id=${u.idUsuario}" class="btn tooltipped" data-position="right" data-delay="20" data-tooltip="Deseja mesmo remover?" style="color: white; background-color: #8E001C; size: 10px;">Remover</a></td>
+            <td style="text-align: center;"><a href="Controller?command=User.deletar&id=${u.idUsuario}" class="btn tooltipped" data-position="right" data-delay="20" data-tooltip="Deseja mesmo remover?" style="color: white; background-color: #8E001C">Remover</a></td>
         </tr>
     </c:forEach>
 </table>
