@@ -38,11 +38,6 @@
                             </a>
                         </div>
                         <a href="Controller?command=Page.bemvindo" class="brand-logo center">CinemaApp</a>
-                        <ul id="nav-mobile" class="left hide-on-med-and-down">
-                            <li>
-
-                            </li>
-                        </ul>
                     </div>
                 </nav>
             </div>
@@ -52,12 +47,12 @@
                 <c:if test="${usuario == null}">
                     <c:redirect url="index.jsp"></c:redirect>
                 </c:if>
+                
                 <%@include file="WEB-INF/sideNav.jspf"%>
                 <c:choose>
                     <c:when test="${page.equals('bemvindo')}">
                         <h4>Welcome, ${usuario.usuarioInfo.nome}!</h4>
                     </c:when>
-
                     <c:when test="${page.equals('perfil')}">
                         <h4 style="text-decoration: underline;">Profile</h4>
                         <%@include file="WEB-INF/profile.jspf"%> 
