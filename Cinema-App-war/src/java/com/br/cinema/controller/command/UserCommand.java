@@ -82,14 +82,22 @@ public class UserCommand implements Command {
             return;
         }
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        //  Caso não exista nenhum e-mail cadastrado igual ao solicitado OU caso já exista esse e-mail no banco de dados mas seja do usuário atual - OK
+        if (usuarioDAO.readByEmail(request.getParameter("email")) == null || usuarioDAO.readByEmail(request.getParameter("email")).getIdUsuario().longValue() == u.getIdUsuario().longValue()) {
+            UsuarioInfo ui = u.getUsuarioInfo();
+            ui.setEmail(request.getParameter("email"));
+            ui.setNome(request.getParameter("name"));
+            u.setNomeUsuario(request.getParameter("nome_usuario"));
 
-        UsuarioInfo ui = u.getUsuarioInfo();
-        ui.setEmail(request.getParameter("email"));
-        ui.setNome(request.getParameter("name"));
-        u.setNomeUsuario(request.getParameter("nome_usuario"));
+            usuarioDAO.update(u);
+        } else {
+            responsePage = "error.jsp";
+            request.getSession().setAttribute("erro", "E-mail já existente");
+            request.getSession().setAttribute("page", "perfil");
+            request.getSession().setAttribute("previousPage", "home.jsp");
+            return;
+        }
 
-        usuarioDAO.update(u);
         request.getSession().setAttribute("page", "perfil");
         request.getSession().setAttribute("usuario", u);
         responsePage = "home.jsp";
@@ -202,6 +210,5 @@ public class UserCommand implements Command {
             throw new RuntimeException(ne);
         }
     }
-
 
 }

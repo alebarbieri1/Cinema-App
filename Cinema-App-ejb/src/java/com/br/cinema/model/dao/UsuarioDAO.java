@@ -6,6 +6,7 @@
 package com.br.cinema.model.dao;
 
 import com.br.cinema.model.entities.Usuario;
+import com.br.cinema.model.entities.UsuarioInfo;
 import java.util.List;
 import javax.ejb.Stateful;
 import javax.ejb.LocalBean;
@@ -51,6 +52,20 @@ public class UsuarioDAO implements GenericDAO<Usuario> {
     @Override
     public Usuario readById(Long id) {
         return em.find(Usuario.class, id);
+    }
+
+    public Usuario readByEmail(String email) {
+        Usuario u;
+        UsuarioInfo userInfo;
+        Query query = em.createNamedQuery("UsuarioInfo.findByEmail");
+        query.setParameter("email", email);
+        try {
+            userInfo = (UsuarioInfo) query.getSingleResult();
+            u = userInfo.getUsuario();
+        } catch (Exception ex){
+            return null;
+        }
+        return u;
     }
 
     public Usuario readByName(String name) {
