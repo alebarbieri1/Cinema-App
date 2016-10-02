@@ -4,10 +4,10 @@
 <table id='painel_usuarios'>
     <thead>
         <tr>
-            <th>Nome</th>
-            <th>Aniversário</th>
-            <th>Assistindo</th>
-            <th>Completos</th>
+            <th style="text-align: center;">Nome</th>
+            <th style="text-align: center;">Aniversário</th>
+            <th style="text-align: center;">Assistindo</th>
+            <th style="text-align: center;">Completos</th>
             <th style="text-align: center;"><i class="material-icons">delete</i></th>
         </tr>
     </thead>
