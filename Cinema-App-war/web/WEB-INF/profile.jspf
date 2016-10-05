@@ -1,9 +1,30 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<p><b>Nome: </b>${usuario.usuarioInfo.nome}</p>
-<b>Data de Nascimento: </b><fmt:formatDate type="date" value="${usuario.usuarioInfo.aniversario}"/>
-<p><b>Assistindo:</b> ${usuario.usuarioInfo.assistindo}</p>
-<p><b>Completos:</b> ${usuario.usuarioInfo.completos}</p>
-<a href="Controller?command=Page.alterar"><button style="color: #8E001C;">Editar</button></a>
-<a href="Controller?command=Page.alterar_senha"><button style="color: #8E001C;">Alterar Senha</button></a>
+<div class="col s12 z-depth-4 card-panel" style="background-color: #E7E8D1;">
+    <h3 class="center-align">Profile</h3>
+    <div class="row">
+        <div class="row">
+            <div class="input-field col s12">
+                <i>Nome:&nbsp;</i> <span style="font-size: 28px;">${usuario.usuarioInfo.nome}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i>Data de Nascimento:&nbsp;</i> <span style="font-size: 28px;"><fmt:formatDate type="date" value="${usuario.usuarioInfo.aniversario}"/></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <i>Assistindo:&nbsp;</i> <span style="font-size: 28px;">${usuario.usuarioInfo.assistindo}</span>
+            </div>
+            <div class="input-field col s6">
+                <i>Completos:&nbsp;</i> <span style="font-size: 28px;">${usuario.usuarioInfo.completos}</span>
+            </div>
+        </div>
+        <div class="center-align">
+            <a href="Controller?command=Page.alterar"><button class="waves-effect waves-light btn"  style="background-color: #8E001C; color: #D3CEAA">Editar</button></a>
+            <a href="Controller?command=Page.alterar_senha"><button class="waves-effect waves-light btn" style="background-color: #8E001C; color: #D3CEAA">Alterar Senha</button></a>
+        </div>
+    </div>
+</div>
 

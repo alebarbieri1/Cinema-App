@@ -54,7 +54,6 @@
                         <h4>Welcome, ${usuario.usuarioInfo.nome}!</h4>
                     </c:when>
                     <c:when test="${page.equals('perfil')}">
-                        <h4 style="text-decoration: underline;">Profile</h4>
                         <%@include file="WEB-INF/profile.jspf"%> 
                     </c:when>
                     <c:when test="${page.equals('painel')}">

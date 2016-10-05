@@ -1,4 +1,4 @@
-<div class="col s12 z-depth-4 card-panel" style="background-color: #D3CEAA;">
+<div class="col s12 z-depth-4 card-panel" style="background-color: #E7E8D1;">
     <h3 class="center-align">Alterar Senha</h3>
     <div class="row">
         <form action="Controller" method="POST" class="col s12">
@@ -21,3 +21,4 @@
             </div>
         </form>
     </div>
+</div>
