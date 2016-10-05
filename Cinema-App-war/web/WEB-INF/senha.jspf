@@ -5,18 +5,19 @@
             <input type="hidden" name="command" value="User.update_senha">
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="senha" type="password" class="validate" name="senha" required="required">
+                    <input id="senha" type="password" value="${usuario.senha}" class="validate" name="senha" required="required">
                     <label class="active" for="senha"><b>Password</b></label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="senha2" type="password" class="validate" name="senha2" required="required">
+                    <input id="senha2" value="${usuario.senha}" type="password" class="validate" name="senha2" required="required">
                     <label class="active" for="senha2"><b>Confirm&nbsp;password</b></label>
                 </div>
             </div>
             <div class="center-align">
+                <a href="Controller?command=Page.profile"><button class="waves-effect waves-light btn"  style="background-color: #8E001C; color: #D3CEAA">Voltar</button></a>
                 <button class="waves-effect waves-light btn" type="submit" name="action" style="background-color: #8E001C; color: #D3CEAA">
                     <i class="material-icons right">done</i>
-                    Enviar
+                    Editar
                 </button>
             </div>
         </form>

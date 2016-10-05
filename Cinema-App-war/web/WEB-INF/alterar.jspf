@@ -24,9 +24,10 @@
                 </div>
             </div>
             <div class="center-align">
+                <a href="Controller?command=Page.profile"><button class="waves-effect waves-light btn"  style="background-color: #8E001C; color: #D3CEAA">Voltar</button></a>
                 <button class="waves-effect waves-light btn" type="submit" name="action" style="background-color: #8E001C; color: #D3CEAA">
                     <i class="material-icons right">done</i>
-                    Enviar
+                    Editar
                 </button>
             </div>
         </form>
