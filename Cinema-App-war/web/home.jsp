@@ -57,7 +57,6 @@
                         <%@include file="WEB-INF/profile.jspf"%> 
                     </c:when>
                     <c:when test="${page.equals('painel')}">
-                        <h4 style="text-decoration: underline;">Painel de Controle - Usuários Cadastrados</h4>
                         <%@include file="WEB-INF/painel.jspf"%> 
                     </c:when>
                     <c:when test="${page.equals('alterar')}">

@@ -1,23 +1,30 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<table id='painel_usuarios'>
-    <thead>
-        <tr>
-            <th style="text-align: center;">Nome</th>
-            <th style="text-align: center;">Aniversário</th>
-            <th style="text-align: center;">Assistindo</th>
-            <th style="text-align: center;">Completos</th>
-            <th style="text-align: center;"><i class="material-icons">delete</i></th>
-        </tr>
-    </thead>
-    <c:forEach items="${usuarios}" var="u"> 
-        <tr>
-            <td>${u.usuarioInfo.nome}</td>
-            <td><fmt:formatDate type="date" value="${u.usuarioInfo.aniversario}"/></td>
-            <td>${u.usuarioInfo.assistindo}</td>
-            <td>${u.usuarioInfo.completos}</td>
-            <td style="text-align: center;"><a href="Controller?command=User.deletar&id=${u.idUsuario}" class="btn tooltipped" data-position="right" data-delay="20" data-tooltip="Deseja mesmo remover?" style="color: white; background-color: #8E001C">Remover</a></td>
-        </tr>
-    </c:forEach>
-</table>
+<div class="col s12 z-depth-4 card-panel" style="background-color: #E7E8D1;">
+    <h3 class="center-align">Painel de Controle - Usuários Cadastrados</h3>
+    <div class="row">
+        <div class="input-field col s12">
+            <table id='painel_usuarios'>
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">Nome</th>
+                        <th style="text-align: center;">Aniversário</th>
+                        <th style="text-align: center;">Assistindo</th>
+                        <th style="text-align: center;">Completos</th>
+                        <th style="text-align: center;"><i class="material-icons">delete</i></th>
+                    </tr>
+                </thead>
+                <c:forEach items="${usuarios}" var="u"> 
+                    <tr>
+                        <td>${u.usuarioInfo.nome}</td>
+                        <td><fmt:formatDate type="date" value="${u.usuarioInfo.aniversario}"/></td>
+                        <td>${u.usuarioInfo.assistindo}</td>
+                        <td>${u.usuarioInfo.completos}</td>
+                        <td style="text-align: center;"><a href="Controller?command=User.deletar&id=${u.idUsuario}" class="btn tooltipped" data-position="right" data-delay="20" data-tooltip="Deseja mesmo remover?" style="color: white; background-color: #8E001C">Remover</a></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
+    </div>
+</div>
