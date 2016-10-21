@@ -27,7 +27,7 @@
         <!-- JavaScript -->
         <script src="javascript/javaScript.js" type="text/javascript"></script>
     </head>
-    <body style="background-color: #D3CEAA">
+    <body style="background-color: #D3CEAA; height: auto; min-height: 100%">
         <header>
             <div class="navbar-fixed">
                 <nav style="background-color: #8E001C">
@@ -55,7 +55,7 @@
                 <c:choose>
                     <c:when test="${page.equals('bemvindo')}">
                         <h4>Welcome, ${usuario.usuarioInfo.nome}!</h4>
-                        <a href="Controller?command=Serie.listar&qtd=6">Listar</a>
+                        <a href="Controller?command=Serie.listar&qtd=10">Listar</a>
                         <c:if test="${series != null}">
                             <br>
                             <c:forEach items="${series}" var="s"> 
@@ -67,7 +67,7 @@
                                 </c:if>
                                 <b>Id: </b>${s.idSerie} -
                                 <b>Nome: </b>${s.nomeSerie} -
-                                <b>Qtd de Episódios: </b>${s.episodios}<br>
+                                <b>Qtd de Episódios: </b>${s.episodios}<br><br>
                             </c:forEach>
                         </c:if>
                     </c:when>
