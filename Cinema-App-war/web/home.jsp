@@ -4,6 +4,9 @@
     Author     : Alexandre Barbieri
 --%>
 
+<%@page import="com.br.cinema.model.entities.Serie"%>
+<%@page import="java.util.List"%>
+<%@page import="com.br.cinema.json.JSONParser"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -47,11 +50,26 @@
                 <c:if test="${usuario == null}">
                     <c:redirect url="index.jsp"></c:redirect>
                 </c:if>
-                
+
                 <%@include file="WEB-INF/sideNav.jspf"%>
                 <c:choose>
                     <c:when test="${page.equals('bemvindo')}">
                         <h4>Welcome, ${usuario.usuarioInfo.nome}!</h4>
+                        <a href="Controller?command=Serie.listar&qtd=6">Listar</a>
+                        <c:if test="${series != null}">
+                            <br>
+                            <c:forEach items="${series}" var="s"> 
+                                <c:if test="${s.poster_path == ''}">
+                                    <img src="http://image.flaticon.com/icons/svg/36/36601.svg" width="60" height="60">
+                                </c:if>
+                                <c:if test="${s.poster_path != ''}">
+                                    <img src="https://image.tmdb.org/t/p/w500${s.poster_path}" width="60" height="60">
+                                </c:if>
+                                <b>Id: </b>${s.idSerie} -
+                                <b>Nome: </b>${s.nomeSerie} -
+                                <b>Qtd de Episódios: </b>${s.episodios}<br>
+                            </c:forEach>
+                        </c:if>
                     </c:when>
                     <c:when test="${page.equals('perfil')}">
                         <%@include file="WEB-INF/profile.jspf"%> 

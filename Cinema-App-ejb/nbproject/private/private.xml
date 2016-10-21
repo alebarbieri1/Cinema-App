@@ -8,10 +8,13 @@
             <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-ejb/src/java/com/br/cinema/model/dao/UsuarioDAO.java</file>
             <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-ejb/src/java/com/br/cinema/model/entities/Usuario.java</file>
             <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-ejb/src/java/com/br/cinema/model/entities/UsuarioInfo.java</file>
+            <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-ejb/src/java/com/br/cinema/json/JSONParser.java</file>
             <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-ejb/src/conf/persistence.xml</file>
             <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-ejb/src/java/com/br/cinema/model/dao/FilmeDAO.java</file>
             <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-ejb/src/java/com/br/cinema/model/dao/SerieDAO.java</file>
             <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-ejb/src/java/com/br/cinema/model/dao/RegistroSerieDAO.java</file>
+            <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-ejb/src/java/com/br/cinema/model/entities/Filme.java</file>
+            <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-ejb/src/java/com/br/cinema/model/entities/Serie.java</file>
         </group>
     </open-files>
 </project-private>
