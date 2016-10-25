@@ -26,6 +26,8 @@
         <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
         <!-- JavaScript -->
         <script src="javascript/javaScript.js" type="text/javascript"></script>
+        <!— Favicon —>
+        <link rel="icon" type="image/png" href="image/cinema-favicon.png">
     </head>
     <body style="background-color: #D3CEAA; height: auto; min-height: 100%">
         <header>
