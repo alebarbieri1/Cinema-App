@@ -19,6 +19,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -67,6 +68,8 @@ public class Serie implements Serializable {
     @JoinColumn(name = "TEMPORADA_ANTERIOR", referencedColumnName = "ID_SERIE")
     @ManyToOne
     private Serie temporadaAnterior;
+    @Transient
+    private String poster_path;
 
     public Serie() {
     }
@@ -156,6 +159,14 @@ public class Serie implements Serializable {
 
     public void setTemporadaAnterior(Serie temporadaAnterior) {
         this.temporadaAnterior = temporadaAnterior;
+    }
+
+    public String getPoster_path() {
+        return poster_path;
+    }
+
+    public void setPoster_path(String poster_path) {
+        this.poster_path = poster_path;
     }
 
     @Override
