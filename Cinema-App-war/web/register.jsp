@@ -22,7 +22,7 @@
         <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
         <!-- JavaScript -->
         <script src="javascript/javaScript.js" type="text/javascript"></script>
-        <!— Favicon —>
+        <!-- Favicon -->
         <link rel="icon" type="image/png" href="image/cinema-favicon.png">
     </head>
     <body class="cartao">

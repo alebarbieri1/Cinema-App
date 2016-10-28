@@ -26,7 +26,7 @@
         <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
         <!-- JavaScript -->
         <script src="javascript/javaScript.js" type="text/javascript"></script>
-        <!— Favicon —>
+        <!-- Favicon -->
         <link rel="icon" type="image/png" href="image/cinema-favicon.png">
     </head>
     <body style="background-color: #D3CEAA; height: auto; min-height: 100%">
@@ -56,21 +56,29 @@
                 <%@include file="WEB-INF/sideNav.jspf"%>
                 <c:choose>
                     <c:when test="${page.equals('bemvindo')}">
-                        <h4>Welcome, ${usuario.usuarioInfo.nome}!</h4>
-                        <a href="Controller?command=Serie.listar&qtd=10">Listar</a>
+                        <button class="btn waves-effect waves-light" style="background-color: #8E001C; margin-top: 10px;">
+                            <a href="Controller?command=Serie.listar&qtd=10" style="color: #D3CEAA;">Listar</a>
+                        </button>
                         <c:if test="${series != null}">
                             <br>
-                            <c:forEach items="${series}" var="s"> 
-                                <c:if test="${s.poster_path == ''}">
-                                    <img src="http://image.flaticon.com/icons/svg/36/36601.svg" width="60" height="60">
-                                </c:if>
-                                <c:if test="${s.poster_path != ''}">
-                                    <img src="https://image.tmdb.org/t/p/w500${s.poster_path}" width="60" height="60">
-                                </c:if>
-                                <b>Id: </b>${s.idSerie} -
-                                <b>Nome: </b>${s.nomeSerie} -
-                                <b>Qtd de Episódios: </b>${s.episodios}<br><br>
-                            </c:forEach>
+                            <div class="container">
+                                <c:forEach items="${series}" var="s"> 
+                                    <div class="col s12 z-depth-4 card-panel seriesCard">
+                                        <div class="center-align">
+                                            <c:if test="${s.poster_path == ''}">
+                                                <img src="" width="90" height="90" style="float: left; clear: both;">
+                                                <!-- <img src="http://image.flaticon.com/icons/svg/36/36601.svg" width="90" height="90" style="float: left; clear: both;"> -->
+                                            </c:if>
+                                            <c:if test="${s.poster_path != ''}">
+                                                <img src="https://image.tmdb.org/t/p/w500${s.poster_path}" width="90" height="90" style="float: left; clear: both;">
+                                            </c:if>
+                                            <b><i>#${s.idSerie}</i></b><br>
+                                            <b><i style="font-size: 25px; color: black;">${s.nomeSerie}</i></b><br>
+                                            <b>Episodes:&nbsp;</b>${s.episodios}<br><br>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </div>
                         </c:if>
                     </c:when>
                     <c:when test="${page.equals('perfil')}">
