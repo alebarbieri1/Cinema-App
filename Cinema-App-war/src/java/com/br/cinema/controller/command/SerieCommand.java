@@ -35,6 +35,9 @@ public class SerieCommand implements Command {
             case "listar":
                 listar();
                 break;
+            case "listarEsta":
+                listarEsta();
+                break;
         }
     }
 
@@ -56,6 +59,19 @@ public class SerieCommand implements Command {
         }
         request.getSession().setAttribute("series", series);
         responsePage = "home.jsp";
+    }
+
+    private void listarEsta() {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Serie serie = new Serie();
+
+        String content = JSONParser.openURL("https://api.themoviedb.org/3/tv/" + id + "?api_key=0793bedcbb5893728b91c114222266ff&language=en-US");
+        if (content != null) {
+            serie = JSONParser.parseSerieDetails(content);
+        }
+
+        request.getSession().setAttribute("serie", serie);
+        responsePage = "serie.jsp";
     }
 
 }
