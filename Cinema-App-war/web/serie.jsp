@@ -57,16 +57,31 @@
                 </c:if>
 
                 <%@include file="WEB-INF/sideNav.jspf"%>
-                 <c:if test="${serie.poster_path == ''}">
-                                        <img src="http://image.flaticon.com/icons/svg/36/36601.svg" width="60" height="60">
-                                    </c:if>
-                                    <c:if test="${serie.poster_path != ''}">
-                                        <img src="https://image.tmdb.org/t/p/w500${serie.poster_path}" width="60" height="60">
-                                    </c:if>
-                                </a>
-                                <b>Id: </b>${serie.idSerie} -
-                                <b>Nome: </b>${serie.nomeSerie} -
-                                <b>Qtd de Episódios: </b>${serie.episodios}<br><br>
+                <c:if test="${serie.poster_path == ''}">
+                    <img src="http://image.flaticon.com/icons/svg/36/36601.svg" width="60" height="60">
+                </c:if>
+                <c:if test="${serie.poster_path != ''}">
+                    <img src="https://image.tmdb.org/t/p/w500${serie.poster_path}" width="60" height="60">
+                </c:if>
+                </a>
+                <b>Id: </b>${serie.idSerie} -
+                <b>Nome: </b>${serie.nomeSerie} -
+                <b>Qtd de Episódios: </b>${serie.episodios}<br><br>
+                <form action="Controller" method="POST">
+                    <label>Status</label>
+                    <select name="status" id="status">
+                        <option value="completo">Completo</option>
+                        <option value="assistindo">Assistindo</option>
+                        <option value="pausado">Pausado</option>
+                        <option value="vou_assistir">Vou assistir</option>
+                    </select> 
+                    <label>Episodios</label>
+                    <input type="number" name="episodios" min="0" max="${serie.episodios}">
+                    <input type="hidden" name="id_usuario" value="${usuario.idUsuario}">
+                    <input type="hidden" name="id_serie" value="${serie.idSerie}">
+                    <input type="hidden" name="command" value="RegistroSerie.adicionar">
+                    <input type="submit" value="Add">
+                </form>
             </div>
         </div>
     </body>
