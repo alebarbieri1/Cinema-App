@@ -63,20 +63,22 @@
                             <br>
                             <div class="container">
                                 <c:forEach items="${series}" var="s"> 
-                                    <div class="col s12 z-depth-4 card-panel seriesCard">
-                                        <div class="center-align">
-                                            <c:if test="${s.poster_path == ''}">
-                                                <img src="" width="90" height="90" style="float: left; clear: both;">
-                                                <!-- <img src="http://image.flaticon.com/icons/svg/36/36601.svg" width="90" height="90" style="float: left; clear: both;"> -->
-                                            </c:if>
-                                            <c:if test="${s.poster_path != ''}">
-                                                <img src="https://image.tmdb.org/t/p/w500${s.poster_path}" width="90" height="90" style="float: left; clear: both;">
-                                            </c:if>
-                                            <b><i>#${s.idSerie}</i></b><br>
-                                            <b><i style="font-size: 25px; color: black;">${s.nomeSerie}</i></b><br>
-                                            <b>Episodes:&nbsp;</b>${s.episodios}<br><br>
+                                    <a href="Controller?command=Serie.listarEsta&id=${s.idSerie}">
+                                        <div class="col s12 z-depth-4 card-panel seriesCard">
+                                            <div class="center-align">
+                                                <c:if test="${s.poster_path == ''}">
+                                                    <img src="" width="90" height="90" style="float: left; clear: both;">
+                                                    <!-- <img src="http://image.flaticon.com/icons/svg/36/36601.svg" width="90" height="90" style="float: left; clear: both;"> -->
+                                                </c:if>
+                                                <c:if test="${s.poster_path != ''}">
+                                                    <img src="https://image.tmdb.org/t/p/w500${s.poster_path}" width="90" height="90" style="float: left; clear: both;">
+                                                </c:if>
+                                                <b><i>#${s.idSerie}</i></b><br>
+                                                <b><i style="font-size: 25px; color: black;">${s.nomeSerie}</i></b><br>
+                                                <b>Episodes:&nbsp;</b>${s.episodios}<br><br>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </c:forEach>
                             </div>
                         </c:if>

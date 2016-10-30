@@ -67,21 +67,35 @@
                 <b>Id: </b>${serie.idSerie} -
                 <b>Nome: </b>${serie.nomeSerie} -
                 <b>Qtd de Episódios: </b>${serie.episodios}<br><br>
-                <form action="Controller" method="POST">
-                    <label>Status</label>
-                    <select name="status" id="status">
-                        <option value="completo">Completo</option>
-                        <option value="assistindo">Assistindo</option>
-                        <option value="pausado">Pausado</option>
-                        <option value="vou_assistir">Vou assistir</option>
-                    </select> 
-                    <label>Episodios</label>
-                    <input type="number" name="episodios" min="0" max="${serie.episodios}">
-                    <input type="hidden" name="id_usuario" value="${usuario.idUsuario}">
-                    <input type="hidden" name="id_serie" value="${serie.idSerie}">
-                    <input type="hidden" name="command" value="RegistroSerie.adicionar">
-                    <input type="submit" value="Add">
-                </form>
+                <div class="col s12 z-depth-4 card-panel" style="background-color: #E7E8D1;">
+                    <div class="row">
+
+                        <form action="Controller" method="POST">
+                            <div class="col s6">
+                                <label>Status</label>
+                                <select name="status" id="status">
+                                    <option value="completo">Completo</option>
+                                    <option value="assistindo">Assistindo</option>
+                                    <option value="pausado">Pausado</option>
+                                    <option value="vou_assistir">Vou assistir</option>
+                                </select> 
+                            </div>
+                            <div class="col s6">
+                                <label >Episodios</label>
+                                <input type="number" name="episodios" min="0" max="${serie.episodios}">
+                                <input type="hidden" name="id_usuario" value="${usuario.idUsuario}">
+                                <input type="hidden" name="id_serie" value="${serie.idSerie}">
+                                <input type="hidden" name="command" value="RegistroSerie.adicionar">
+                            </div>
+                            <div class="center-align">
+                                <button class="waves-effect waves-light btn" type="submit" name="action" style="background-color: #8E001C; color: #D3CEAA">
+                                    <i class="material-icons right">done</i>
+                                    Adicionar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
