@@ -33,8 +33,9 @@ public class JSONParser {
         String content = "";
         try {
             URL url = new URL(uri);
-            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("10.128.1.70", 8080));
-            HttpURLConnection con = (HttpURLConnection) url.openConnection(proxy);
+            // Mack: "172.16.0.10",3128
+            //Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.16.0.10",3128));
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
             int code = con.getResponseCode();
             if (code == 407) {
                 System.out.println("Falha na autenticação do proxy");
