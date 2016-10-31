@@ -41,3 +41,13 @@ th {
 tr:nth-child(even) {
     background-color: #FBF7E4;
 }
+
+.seriesCard {
+    background-color: #E7E8D1; 
+    display: block;
+}
+
+.seriesCard:hover {
+    background-color: #C6C6B3;
+    cursor: pointer;
+}

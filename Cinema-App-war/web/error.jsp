@@ -17,6 +17,8 @@
         <!-- jQuery 3.x -->
         <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="image/cinema-favicon.png">
     </head>
     <body>
         <h5 class="card-panel red white-text">Erro - ${erro}!</h5>
