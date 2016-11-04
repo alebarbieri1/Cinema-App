@@ -193,5 +193,5 @@ public class Serie implements Serializable {
     public String toString() {
         return "com.br.cinema.model.entities.Serie[ idSerie=" + idSerie + " ]";
     }
-    
+
 }
