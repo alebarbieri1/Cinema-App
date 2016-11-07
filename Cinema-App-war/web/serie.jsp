@@ -48,41 +48,56 @@
             </div>
         </header>
         <div class="container">
-            <div>
-                <c:if test="${usuario == null}">
-                    <c:redirect url="index.jsp"></c:redirect>
-                </c:if>
-                <c:if test="${serie == null}">
-                    <c:redirect url="home.jsp"></c:redirect>
-                </c:if>
+            <c:if test="${usuario == null}">
+                <c:redirect url="index.jsp"></c:redirect>
+            </c:if>
+            <c:if test="${serie == null}">
+                <c:redirect url="home.jsp"></c:redirect>
+            </c:if>
 
-                <%@include file="WEB-INF/sideNav.jspf"%>
-                <c:if test="${serie.poster_path == ''}">
-                    <img src="http://image.flaticon.com/icons/svg/36/36601.svg" width="60" height="60">
-                </c:if>
-                <c:if test="${serie.poster_path != ''}">
-                    <img src="https://image.tmdb.org/t/p/w500${serie.poster_path}" width="60" height="60">
-                </c:if>
-                </a>
-                <b>Id: </b>${serie.idSerie} -
-                <b>Nome: </b>${serie.nomeSerie} -
-                <b>Qtd de Episódios: </b>${serie.episodios}<br><br>
+            <%@include file="WEB-INF/sideNav.jspf"%>
+            <div class="col s12 z-depth-4 card-panel detalheSerieCard">
+                <div class="center-align">
+                    <figure>
+                        <c:if test="${serie.poster_path == ''}">
+                            <img src="" width="300" height="300">
+                        </c:if>
+                        <c:if test="${serie.poster_path != ''}">
+                            <img src="https://image.tmdb.org/t/p/w500${serie.poster_path}" width="300" height="300" style="align-items: center;">
+                        </c:if>
+                        <figcaption>${serie.nomeSerie}</figcaption>
+                    </figure>
+                </div>
                 <form action="Controller" method="POST">
-                    <label>Status</label>
-                    <select name="status" id="status">
-                        <option value="completo">Completo</option>
-                        <option value="assistindo">Assistindo</option>
-                        <option value="pausado">Pausado</option>
-                        <option value="vou_assistir">Vou assistir</option>
-                    </select> 
-                    <label>Episodios</label>
-                    <input type="number" name="episodios" min="0" max="${serie.episodios}">
+                    <div class="row">
+                        <div class="col s6">
+                            <label for="status">Status</label>
+                            <select name="status" id="status" required>
+                                <option value="" disabled selected>Escolha uma opção</option>
+                                <option value="completo">Completo</option>
+                                <option value="assistindo">Assistindo</option>
+                                <option value="em_espera">Em Espera</option>
+                                <option value="assistirei">Assistirei</option>
+                            </select> 
+                        </div>
+                        <div class="col s6">
+                            <label for="episodios">Episódios</label>
+                            <input type="number" name="episodios" id="episodios" min="0" max="${serie.episodios}" placeholder="Quantos episódios foram assistidos?" required>
+                        </div>
+                    </div>
                     <input type="hidden" name="id_usuario" value="${usuario.idUsuario}">
                     <input type="hidden" name="id_serie" value="${serie.idSerie}">
                     <input type="hidden" name="command" value="RegistroSerie.adicionar">
-                    <input type="submit" value="Add">
+                    <button class="btn waves-effect waves-light white-text" style="background-color: #8E001C; margin-top: 10px;">
+                        <a href="home.jsp" class="white-text">Voltar</a>
+                    </button>
+                    <button class="btn waves-effect waves-light right-align" style="background-color: #8E001C; margin-top: 10px;" type="submit">
+                        Adicionar
+                    </button>
                 </form>
             </div>
+            <br>
+            <br>
         </div>
     </body>
 </html>

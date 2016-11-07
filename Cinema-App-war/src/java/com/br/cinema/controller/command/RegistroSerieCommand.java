@@ -73,26 +73,24 @@ public class RegistroSerieCommand implements Command {
         //Tratamento do Status para evitar inconsistencia
         switch (status) {
             case "completo":
-                rs.setStatus("Completo");
+                rs.setStatus("completo");
                 progresso = rs.getIdSerie().getEpisodios();
                 break;
-            case "vou_assistir":
-                rs.setStatus("Vou assistir");
+            case "assistirei":
+                rs.setStatus("assistirei");
                 progresso = 0;
                 break;
-            case "pausado":
-                rs.setStatus("Pausado");
+            case "em_espera":
+                rs.setStatus("em_espera");
                 break;
             case "assistindo":
-                rs.setStatus("Assistindo");
+                rs.setStatus("assistindo");
                 progresso = progresso == 0 ? 1 : progresso;
-
                 break;
             default:
-                rs.setStatus("Assistindo");
+                rs.setStatus("assistindo");
                 progresso = progresso == 0 ? 1 : progresso;
                 break;
-
         }
 
         rs.setIdUsuario(usuarioDAO.readById(idU));

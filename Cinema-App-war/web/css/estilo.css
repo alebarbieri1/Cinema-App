@@ -51,3 +51,8 @@ tr:nth-child(even) {
     background-color: #C6C6B3;
     cursor: pointer;
 }
+
+.detalheSerieCard  {
+    background-color: #E7E8D1; 
+    display: block;
+}

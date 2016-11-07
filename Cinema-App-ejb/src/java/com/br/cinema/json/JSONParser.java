@@ -33,12 +33,9 @@ public class JSONParser {
         String content = "";
         try {
             URL url = new URL(uri);
-<<<<<<< HEAD
             // Mack: "172.16.0.10",3128
             //Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.16.0.10",3128));
-=======
             // Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("10.128.1.70", 8080));
->>>>>>> ae561c98bac70d10a33a7d76b0ec3880b87b8e9b
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             int code = con.getResponseCode();
             if (code == 407) {
