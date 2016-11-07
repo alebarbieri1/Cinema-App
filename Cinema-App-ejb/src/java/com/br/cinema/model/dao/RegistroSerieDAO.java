@@ -6,6 +6,8 @@
 package com.br.cinema.model.dao;
 
 import com.br.cinema.model.entities.RegistroSerie;
+import com.br.cinema.model.entities.Usuario;
+import com.br.cinema.model.entities.Serie;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
@@ -53,4 +55,19 @@ public class RegistroSerieDAO implements GenericDAO<RegistroSerie> {
         return em.find(RegistroSerie.class, id);
     }
 
+    public RegistroSerie readByUsuarioAndSerie(Usuario u, Serie s) {
+        RegistroSerie rs = null;
+        Query query = em.createQuery("SELECT r FROM RegistroSerie r WHERE (r.idSerie = :idSerie AND r.idUsuario = :idUsuario)", RegistroSerie.class);
+        query.setParameter("idSerie", s);
+        query.setParameter("idUsuario", u);
+        try {
+            rs = (RegistroSerie) query.getSingleResult();
+        } catch (Exception e) {
+
+            return null;
+        } //   return em.find(RegistroSerie.class, id);
+
+        return rs;
+    }
+//SELECT r FROM RegistroSerie r WHERE r.idSerie = :idSerie AND r.idUsuario = :idUsuario
 }
