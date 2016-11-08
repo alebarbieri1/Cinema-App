@@ -73,16 +73,26 @@
                         <div class="col s6">
                             <label for="status">Status</label>
                             <select name="status" id="status" required>
-                                <option value="" disabled selected>Escolha uma opção</option>
-                                <option value="completo">Completo</option>
-                                <option value="assistindo">Assistindo</option>
-                                <option value="em_espera">Em Espera</option>
-                                <option value="assistirei">Assistirei</option>
+                                <c:choose>
+                                    <c:when test="${registro==null}">
+                                        <option value="" disabled selected>Escolha uma opção</option>
+                                        <option value="completo">Completo</option>
+                                        <option value="assistindo">Assistindo</option>
+                                        <option value="em_espera">Em Espera</option>
+                                        <option value="assistirei">Assistirei</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option value="completo"${registro.status.equals("completo")?"selected":""}>Completo</option>
+                                        <option value="assistindo"${registro.status.equals("assistindo")?"selected":""}>Assistindo</option>
+                                        <option value="em_espera"${registro.status.equals("em_espera")?"selected":""}>Em Espera</option>
+                                        <option value="assistirei"${registro.status.equals("assistirei")?"selected":""}>Assistirei</option>
+                                    </c:otherwise>
+                            </c:choose>
                             </select> 
                         </div>
                         <div class="col s6">
                             <label for="episodios">Episódios</label>
-                            <input type="number" name="episodios" id="episodios" min="0" max="${serie.episodios}" placeholder="Quantos episódios foram assistidos?" required>
+                            <input type="number" value="${registro.progresso}" name="episodios" id="episodios" min="0" max="${serie.episodios}" placeholder="Quantos episódios foram assistidos?" required>
                         </div>
                     </div>
                     <input type="hidden" name="id_usuario" value="${usuario.idUsuario}">
