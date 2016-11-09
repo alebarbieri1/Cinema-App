@@ -1,0 +1,8 @@
+09/11/2016 11:07:54 - HTTP/1.1 - GET - Comando: Page.perfil
+09/11/2016 11:07:55 - HTTP/1.1 - GET - Comando: Page.alterar
+09/11/2016 11:07:58 - HTTP/1.1 - GET - Comando: Page.bemvindo
+09/11/2016 11:08:00 - HTTP/1.1 - GET - Comando: Serie.listarEsta
+09/11/2016 11:08:03 - HTTP/1.1 - GET - Comando: Page.bemvindo
+09/11/2016 11:08:04 - HTTP/1.1 - GET - Comando: Page.bemvindo
+09/11/2016 11:08:29 - HTTP/1.1 - GET - Comando: User.logout
+09/11/2016 11:08:37 - HTTP/1.1 - POST - Comando: User.login

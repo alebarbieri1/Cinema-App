@@ -6,10 +6,12 @@
 package com.br.cinema.controller;
 
 import com.br.cinema.controller.command.Command;
+import com.br.cinema.jms.ProducerJMSLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,6 +24,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "Controller", urlPatterns = {"/Controller"})
 public class Controller extends HttpServlet {
+    
+    @EJB
+    private ProducerJMSLocal producerJMS;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,17 +41,18 @@ public class Controller extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            producerJMS.sendMessage(request.getProtocol() + " - " + request.getMethod() + " - Comando: " + request.getParameter("command"));
             
-         String strcommand = request.getParameter("command").split("\\.")[0];
-         
-            try {
-                Command command = (Command) Class.forName("com.br.cinema.controller.command."+strcommand+"Command").newInstance();
+            String strcommand = request.getParameter("command").split("\\.")[0];
+            
+            try {   
+                Command command = (Command) Class.forName("com.br.cinema.controller.command." + strcommand + "Command").newInstance();
                 command.init(request, response);
                 command.execute();
                 response.sendRedirect(command.getResponsePage());
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
                 Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+            }            
         }
     }
 
