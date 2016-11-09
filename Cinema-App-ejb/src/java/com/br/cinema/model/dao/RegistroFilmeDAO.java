@@ -5,7 +5,9 @@
  */
 package com.br.cinema.model.dao;
 
+import com.br.cinema.model.entities.Filme;
 import com.br.cinema.model.entities.RegistroFilme;
+import com.br.cinema.model.entities.Usuario;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
@@ -53,4 +55,24 @@ public class RegistroFilmeDAO implements GenericDAO<RegistroFilme> {
         return em.find(RegistroFilme.class, id);
     }
 
+    public List<RegistroFilme> readByUsuario(Usuario u) {
+        Query query = em.createQuery("SELECT r FROM RegistroFilme r WHERE (r.idUsuario = :idUsuario)", RegistroFilme.class);
+        query.setParameter("idUsuario", u);
+        return (List<RegistroFilme>) query.getResultList();
+    }
+
+    public RegistroFilme readByUsuarioAndSerie(Usuario u, Filme f) {
+        RegistroFilme rf = null;
+        Query query = em.createQuery("SELECT r FROM RegistroFilme r WHERE (r.idFilme = :idFilme AND r.idUsuario = :idUsuario)", RegistroFilme.class);
+        query.setParameter("idFilme", f);
+        query.setParameter("idUsuario", u);
+        try {
+            rf = (RegistroFilme) query.getSingleResult();
+        } catch (Exception e) {
+
+            return null;
+        } //   return em.find(RegistroSerie.class, id);
+
+        return rf;
+    }
 }

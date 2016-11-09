@@ -55,6 +55,12 @@ public class RegistroSerieDAO implements GenericDAO<RegistroSerie> {
         return em.find(RegistroSerie.class, id);
     }
 
+    public List<RegistroSerie> readByUsuario(Usuario u) {
+        Query query = em.createQuery("SELECT r FROM RegistroSerie r WHERE (r.idUsuario = :idUsuario)", RegistroSerie.class);
+        query.setParameter("idUsuario", u);
+        return (List<RegistroSerie>) query.getResultList();
+    }
+
     public RegistroSerie readByUsuarioAndSerie(Usuario u, Serie s) {
         RegistroSerie rs = null;
         Query query = em.createQuery("SELECT r FROM RegistroSerie r WHERE (r.idSerie = :idSerie AND r.idUsuario = :idUsuario)", RegistroSerie.class);
