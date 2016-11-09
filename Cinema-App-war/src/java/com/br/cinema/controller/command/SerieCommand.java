@@ -80,10 +80,8 @@ public class SerieCommand implements Command {
     private void listarEsta() {
         int id = Integer.parseInt(request.getParameter("id"));
         Serie serie = new Serie();
-       long idU =((Usuario)request.getSession().getAttribute("usuario")).getIdUsuario();
-        
+        long idU = ((Usuario) request.getSession().getAttribute("usuario")).getIdUsuario();
         Usuario u = usuarioDAO.readById(idU);
-        System.out.println(u.getNomeUsuario());
         String content = JSONParser.openURL("https://api.themoviedb.org/3/tv/" + id + "?api_key=0793bedcbb5893728b91c114222266ff&language=en-US");
         if (content != null) {
             serie = JSONParser.parseSerieDetails(content);

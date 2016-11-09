@@ -63,7 +63,7 @@
                             <br>
                             <div class="container">
                                 <c:forEach items="${series}" var="s"> 
-                                    <a href="Controller?command=Serie.listarEsta&id=${s.idSerie}&idU=${usuario.idUsuario}" style="text-decoration: none; color: black;"> 
+                                    <a href="Controller?command=Serie.listarEsta&id=${s.idSerie}" style="text-decoration: none; color: black;"> 
                                         <div class="col s12 z-depth-4 card-panel seriesCard">
                                             <div class="center-align">
                                                 <c:if test="${s.poster_path == ''}">

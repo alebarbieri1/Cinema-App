@@ -102,7 +102,7 @@
                         <a href="home.jsp" class="white-text">Voltar</a>
                     </button>
                     <button class="btn waves-effect waves-light right-align" style="background-color: #8E001C; margin-top: 10px;" type="submit">
-                        Adicionar
+                        ${registro==null?"Adicionar":"Atualizar"}
                     </button>
                 </form>
             </div>

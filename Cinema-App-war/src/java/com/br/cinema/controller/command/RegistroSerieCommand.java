@@ -11,6 +11,7 @@ import com.br.cinema.model.dao.SerieDAO;
 import com.br.cinema.model.dao.UsuarioDAO;
 import com.br.cinema.model.entities.RegistroSerie;
 import com.br.cinema.model.entities.Serie;
+import com.br.cinema.model.entities.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -59,44 +60,57 @@ public class RegistroSerieCommand implements Command {
     }
 
     private void adicionar() {
-        RegistroSerie rs = new RegistroSerie();
         String status = request.getParameter("status");
         int progresso;
         //idU é o id do usuario
         //idS é o id da serie
         long idU, idS;
         progresso = Integer.parseInt(request.getParameter("episodios"));
+        progresso = progresso < 0 ? 0 : progresso;
         idS = Long.parseLong(request.getParameter("id_serie"));
         idU = Long.parseLong(request.getParameter("id_usuario"));
-        rs.setIdSerie(serieDAO.readById(idS));
+        String statusPadrao = "";
+        Usuario u = usuarioDAO.readById(idU);
+        Serie s = serieDAO.readById(idS);
 
         //Tratamento do Status para evitar inconsistencia
         switch (status) {
             case "completo":
-                rs.setStatus("completo");
-                progresso = rs.getIdSerie().getEpisodios();
+                statusPadrao = "completo";
+                progresso = s.getEpisodios();
                 break;
             case "assistirei":
-                rs.setStatus("assistirei");
+                statusPadrao = "assistirei";
                 progresso = 0;
                 break;
             case "em_espera":
-                rs.setStatus("em_espera");
+                statusPadrao = "em_espera";
                 break;
             case "assistindo":
-                rs.setStatus("assistindo");
+                statusPadrao = "assistindo";
                 progresso = progresso == 0 ? 1 : progresso;
                 break;
             default:
-                rs.setStatus("assistindo");
+                statusPadrao = "assistindo";
                 progresso = progresso == 0 ? 1 : progresso;
                 break;
         }
 
-        rs.setIdUsuario(usuarioDAO.readById(idU));
-        rs.setProgresso(progresso);
-        rs.setStatus(status);
-        registroSerieDAO.create(rs);
+        RegistroSerie rs;
+        // Caso não haja registro dessa série para esse usuário
+        if ((rs = registroSerieDAO.readByUsuarioAndSerie(u, s)) == null) {
+            rs = new RegistroSerie();
+            rs.setIdUsuario(usuarioDAO.readById(idU));
+            rs.setProgresso(progresso);
+            rs.setStatus(status);
+            rs.setIdSerie(serieDAO.readById(idS));
+            registroSerieDAO.create(rs);
+            // Caso já exista um registro da série para o usuário
+        } else {
+            rs.setProgresso(progresso);
+            rs.setStatus(status);
+            registroSerieDAO.update(rs);
+        }
         responsePage = "home.jsp";
     }
 
