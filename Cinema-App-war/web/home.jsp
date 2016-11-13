@@ -57,31 +57,18 @@
                 <c:choose>
                     <c:when test="${page.equals('bemvindo')}">
                         <button class="btn waves-effect waves-light" style="background-color: #8E001C; margin-top: 10px;">
-                            <a href="Controller?command=Serie.listar&qtd=10" class="white-text">Listar</a>
+                            <a href="Controller?command=Serie.listar" class="white-text">Series</a>
+                        </button>
+                        <button class="btn waves-effect waves-light" style="background-color: #8E001C; margin-top: 10px;">
+                            <a href="Controller?command=Filme.listar" class="white-text">Filmes</a>
                         </button>
                         <c:if test="${series != null}">
-                            <br>
-                            <div class="container">
-                                <c:forEach items="${series}" var="s"> 
-                                    <a href="Controller?command=Serie.listarEsta&id=${s.idApi}" style="text-decoration: none; color: black;"> 
-                                        <div class="col s12 z-depth-4 card-panel seriesCard">
-                                            <div class="center-align">
-                                                <c:if test="${s.poster_path == ''}">
-                                                    <img src="" width="90" height="90" style="float: left; clear: both;">
-                                                    <!-- <img src="http://image.flaticon.com/icons/svg/36/36601.svg" width="90" height="90" style="float: left; clear: both;"> -->
-                                                </c:if>
-                                                <c:if test="${s.poster_path != ''}">
-                                                    <img src="https://image.tmdb.org/t/p/w500${s.poster_path}" width="90" height="90" style="float: left; clear: both;">
-                                                </c:if>
-                                                <b><i>#${s.idApi}</i></b><br>
-                                                <b><i style="font-size: 25px; color: black;">${s.nomeSerie}</i></b><br>
-                                                <b>Episodes:&nbsp;</b>${s.episodios}<br><br>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </c:forEach>
-                                <br>
-                            </div>
+                            <%@include file="WEB-INF/listarSerie.jspf"%>
+
+                        </c:if>
+                        <c:if test="${filmes != null}">
+                            <%@include file="WEB-INF/listarFilme.jspf"%>
+
                         </c:if>
                     </c:when>
                     <c:when test="${page.equals('perfil')}">

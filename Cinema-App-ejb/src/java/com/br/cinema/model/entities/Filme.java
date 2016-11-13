@@ -19,6 +19,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -35,7 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Filme.findByIdFilme", query = "SELECT f FROM Filme f WHERE f.idFilme = :idFilme"),
     @NamedQuery(name = "Filme.findByNomeFilme", query = "SELECT f FROM Filme f WHERE f.nomeFilme = :nomeFilme"),
     @NamedQuery(name = "Filme.findByNota", query = "SELECT f FROM Filme f WHERE f.nota = :nota"),
-    @NamedQuery(name = "Filme.findByFans", query = "SELECT f FROM Filme f WHERE f.fans = :fans")})
+    @NamedQuery(name = "Filme.findByFans", query = "SELECT f FROM Filme f WHERE f.fans = :fans"),
+    @NamedQuery(name = "Filme.findByIdApi", query = "SELECT f FROM Filme f WHERE f.idApi = :idApi")})
 public class Filme implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,6 +54,9 @@ public class Filme implements Serializable {
     private Double nota;
     @Column(name = "FANS")
     private Integer fans;
+    @Column(name = "ID_API")
+    private Long idApi;
+
     @OneToMany(mappedBy = "idFilme")
     private List<RegistroFilme> registroFilmeList;
     @OneToMany(mappedBy = "anterior")
@@ -64,6 +69,16 @@ public class Filme implements Serializable {
     @JoinColumn(name = "SEQUENCIA", referencedColumnName = "ID_FILME")
     @ManyToOne
     private Filme sequencia;
+    @Transient
+    private String poster_path;
+
+    public String getPoster_path() {
+        return poster_path;
+    }
+
+    public void setPoster_path(String poster_path) {
+        this.poster_path = poster_path;
+    }
 
     public Filme() {
     }
@@ -86,6 +101,14 @@ public class Filme implements Serializable {
 
     public void setNomeFilme(String nomeFilme) {
         this.nomeFilme = nomeFilme;
+    }
+
+    public Long getIdApi() {
+        return idApi;
+    }
+
+    public void setIdApi(Long idApi) {
+        this.idApi = idApi;
     }
 
     public Double getNota() {
@@ -171,5 +194,5 @@ public class Filme implements Serializable {
     public String toString() {
         return "com.br.cinema.model.entities.Filme[ idFilme=" + idFilme + " ]";
     }
-    
+
 }

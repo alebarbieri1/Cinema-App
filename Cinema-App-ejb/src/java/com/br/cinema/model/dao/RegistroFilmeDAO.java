@@ -61,7 +61,7 @@ public class RegistroFilmeDAO implements GenericDAO<RegistroFilme> {
         return (List<RegistroFilme>) query.getResultList();
     }
 
-    public RegistroFilme readByUsuarioAndSerie(Usuario u, Filme f) {
+    public RegistroFilme readByUsuarioAndFilme(Usuario u, Filme f) {
         RegistroFilme rf = null;
         Query query = em.createQuery("SELECT r FROM RegistroFilme r WHERE (r.idFilme = :idFilme AND r.idUsuario = :idUsuario)", RegistroFilme.class);
         query.setParameter("idFilme", f);
@@ -75,4 +75,6 @@ public class RegistroFilmeDAO implements GenericDAO<RegistroFilme> {
 
         return rf;
     }
+
+    
 }

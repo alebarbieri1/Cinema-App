@@ -6,7 +6,6 @@
 package com.br.cinema.model.entities;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;

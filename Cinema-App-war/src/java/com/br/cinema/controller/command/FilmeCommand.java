@@ -6,11 +6,11 @@
 package com.br.cinema.controller.command;
 
 import com.br.cinema.json.JSONParser;
-import com.br.cinema.model.dao.RegistroSerieDAO;
-import com.br.cinema.model.dao.SerieDAO;
+import com.br.cinema.model.dao.FilmeDAO;
+import com.br.cinema.model.dao.RegistroFilmeDAO;
 import com.br.cinema.model.dao.UsuarioDAO;
-import com.br.cinema.model.entities.RegistroSerie;
-import com.br.cinema.model.entities.Serie;
+import com.br.cinema.model.entities.Filme;
+import com.br.cinema.model.entities.RegistroFilme;
 import com.br.cinema.model.entities.Usuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,13 +26,13 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Alexandre Barbieri
  */
-public class SerieCommand implements Command {
+public class FilmeCommand implements Command {
 
-    SerieDAO serieDAO = lookupSerieDAOBean();
+    RegistroFilmeDAO registroFilmeDAO = lookupRegistroFilmeDAOBean();
+
+    FilmeDAO filmeDAO = lookupFilmeDAOBean();
 
     UsuarioDAO usuarioDAO = lookupUsuarioDAOBean();
-
-    RegistroSerieDAO registroSerieDAO = lookupRegistroSerieDAOBean();
 
     private HttpServletRequest request;
     private HttpServletResponse response;
@@ -51,8 +51,8 @@ public class SerieCommand implements Command {
             case "listar":
                 listar();
                 break;
-            case "listarEsta":
-                listarEsta();
+            case "listarEste":
+                listarEste();
                 break;
         }
     }
@@ -64,52 +64,35 @@ public class SerieCommand implements Command {
 
     private void listar() {
 //        int qtd = Integer.parseInt(request.getParameter("qtd"));
-//        List<Serie> series = new ArrayList();
-        List<Serie> series = new ArrayList();
-        /*
-        for (int i = 1; i <= qtd; i++) {
-            String content = JSONParser.openURL("https://api.themoviedb.org/3/tv/" + i + "?api_key=0793bedcbb5893728b91c114222266ff&language=en-US");
-            if (content != null) {
-                Serie serie = JSONParser.parseSerieDetails(content);
-                series.add(serie);
-            }
-        }*/
-        String content = JSONParser.openURL("https://api.themoviedb.org/3/tv/popular?api_key=0793bedcbb5893728b91c114222266ff&language=en-US");
-        if (content != null) {
-            series = JSONParser.parseSerieList(content);
-        }
-        request.getSession().setAttribute("series", series);
+        List<Filme> filmes = new ArrayList();
+
+        String content = JSONParser.openURL("https://api.themoviedb.org/3/movie/popular?api_key=0793bedcbb5893728b91c114222266ff&language=en-US");
+        filmes = JSONParser.parseFilmeList(content);
+
+        request.getSession().setAttribute("filmes", filmes);
         responsePage = "home.jsp";
     }
 
-    private void listarEsta() {
+    private void listarEste() {
         int id = Integer.parseInt(request.getParameter("id"));
-        Serie serie = new Serie();
+        Filme filme = new Filme();
         long idU = ((Usuario) request.getSession().getAttribute("usuario")).getIdUsuario();
         Usuario u = usuarioDAO.readById(idU);
-        String content = JSONParser.openURL("https://api.themoviedb.org/3/tv/" + id + "?api_key=0793bedcbb5893728b91c114222266ff&language=en-US");
+        String content = JSONParser.openURL("https://api.themoviedb.org/3/movie/" + id + "?api_key=0793bedcbb5893728b91c114222266ff&language=en-US");
         if (content != null) {
-            serie = JSONParser.parseSerieDetails(content);
+            filme = JSONParser.parseFilmeDetails(content);
         }
 
-        Serie teste = serieDAO.readByIdApi(serie.getIdApi());
+        Filme teste = filmeDAO.readByIdApi(filme.getIdApi());
 
-        RegistroSerie rs = registroSerieDAO.readByUsuarioAndSerie(u, teste);
-        request.getSession().setAttribute("registro", rs);
-        request.getSession().setAttribute("serie", serie);
+        RegistroFilme rf = registroFilmeDAO.readByUsuarioAndFilme(u, teste);
+        request.getSession().setAttribute("registro", rf);
+        request.getSession().setAttribute("filme", filme);
         //   System.out.println(rs.getProgresso());
-        responsePage = "serie.jsp";
+        responsePage = "filme.jsp";
     }
 
-    private RegistroSerieDAO lookupRegistroSerieDAOBean() {
-        try {
-            Context c = new InitialContext();
-            return (RegistroSerieDAO) c.lookup("java:global/Cinema-App/Cinema-App-ejb/RegistroSerieDAO!com.br.cinema.model.dao.RegistroSerieDAO");
-        } catch (NamingException ne) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
-            throw new RuntimeException(ne);
-        }
-    }
+   
 
     private UsuarioDAO lookupUsuarioDAOBean() {
         try {
@@ -121,10 +104,20 @@ public class SerieCommand implements Command {
         }
     }
 
-    private SerieDAO lookupSerieDAOBean() {
+    private FilmeDAO lookupFilmeDAOBean() {
         try {
             Context c = new InitialContext();
-            return (SerieDAO) c.lookup("java:global/Cinema-App/Cinema-App-ejb/SerieDAO!com.br.cinema.model.dao.SerieDAO");
+            return (FilmeDAO) c.lookup("java:global/Cinema-App/Cinema-App-ejb/FilmeDAO!com.br.cinema.model.dao.FilmeDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private RegistroFilmeDAO lookupRegistroFilmeDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (RegistroFilmeDAO) c.lookup("java:global/Cinema-App/Cinema-App-ejb/RegistroFilmeDAO!com.br.cinema.model.dao.RegistroFilmeDAO");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);

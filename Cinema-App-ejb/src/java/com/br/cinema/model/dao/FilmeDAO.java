@@ -53,4 +53,16 @@ public class FilmeDAO implements GenericDAO<Filme> {
         return em.find(Filme.class, id);
     }
 
+    public Filme readByIdApi(Long id) {
+        Filme f;
+        Query query = em.createNamedQuery("Filme.findByIdApi");
+        query.setParameter("idApi", id);
+        try {
+            f = (Filme) query.getSingleResult();
+        } catch (Exception e) {
+            f = null;
+        }
+        return f;
+    }
+
 }
