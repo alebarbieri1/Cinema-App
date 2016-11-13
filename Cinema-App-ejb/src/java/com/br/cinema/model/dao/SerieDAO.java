@@ -53,4 +53,16 @@ public class SerieDAO implements GenericDAO<Serie> {
         return em.find(Serie.class, id);
     }
 
+    public Serie readByIdApi(Long id) {
+        Serie s;
+        Query query = em.createNamedQuery("Serie.findByIdApi");
+        query.setParameter("idApi", id);
+        try {
+            s = (Serie) query.getSingleResult();
+        } catch (Exception e) {
+            s = null;
+        }
+        return s;
+    }
+
 }

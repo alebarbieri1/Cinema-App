@@ -87,7 +87,8 @@ public class SerieCommand implements Command {
             serie = JSONParser.parseSerieDetails(content);
         }
 
-        Serie teste = serieDAO.readById(serie.getIdSerie());
+        Serie teste = serieDAO.readByIdApi(serie.getIdApi());
+      
         RegistroSerie rs = registroSerieDAO.readByUsuarioAndSerie(u, teste);
         request.getSession().setAttribute("registro", rs);
         request.getSession().setAttribute("serie", serie);

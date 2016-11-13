@@ -69,11 +69,8 @@ public class RegistroSerieDAO implements GenericDAO<RegistroSerie> {
         try {
             rs = (RegistroSerie) query.getSingleResult();
         } catch (Exception e) {
-
-            return null;
-        } //   return em.find(RegistroSerie.class, id);
-
+            rs = null;
+        }
         return rs;
     }
-//SELECT r FROM RegistroSerie r WHERE r.idSerie = :idSerie AND r.idUsuario = :idUsuario
 }

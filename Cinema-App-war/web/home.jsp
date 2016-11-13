@@ -63,7 +63,7 @@
                             <br>
                             <div class="container">
                                 <c:forEach items="${series}" var="s"> 
-                                    <a href="Controller?command=Serie.listarEsta&id=${s.idSerie}" style="text-decoration: none; color: black;"> 
+                                    <a href="Controller?command=Serie.listarEsta&id=${s.idApi}" style="text-decoration: none; color: black;"> 
                                         <div class="col s12 z-depth-4 card-panel seriesCard">
                                             <div class="center-align">
                                                 <c:if test="${s.poster_path == ''}">
@@ -73,7 +73,7 @@
                                                 <c:if test="${s.poster_path != ''}">
                                                     <img src="https://image.tmdb.org/t/p/w500${s.poster_path}" width="90" height="90" style="float: left; clear: both;">
                                                 </c:if>
-                                                <b><i>#${s.idSerie}</i></b><br>
+                                                <b><i>#${s.idApi}</i></b><br>
                                                 <b><i style="font-size: 25px; color: black;">${s.nomeSerie}</i></b><br>
                                                 <b>Episodes:&nbsp;</b>${s.episodios}<br><br>
                                             </div>

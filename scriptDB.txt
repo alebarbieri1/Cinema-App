@@ -38,6 +38,7 @@ FOREIGN KEY(id_usuario) REFERENCES usuario (id_usuario)
 
 CREATE TABLE filme (
 id_filme BIGINT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1,INCREMENT BY 1),
+id_api BIGINT,
 nome_filme VARCHAR(100),
 sequencia BIGINT,
 anterior BIGINT,
@@ -48,6 +49,7 @@ fans INTEGER
 CREATE TABLE serie (
 id_serie BIGINT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1,INCREMENT BY 1),
 nome_serie VARCHAR(100 ),
+id_api BIGINT,
 episodios INTEGER,
 temporada_anterior BIGINT,
 temporada_seguinte BIGINT,

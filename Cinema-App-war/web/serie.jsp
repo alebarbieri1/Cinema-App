@@ -96,7 +96,7 @@
                         </div>
                     </div>
                     <input type="hidden" name="id_usuario" value="${usuario.idUsuario}">
-                    <input type="hidden" name="id_serie" value="${serie.idSerie}">
+                    <input type="hidden" name="id_serie" value="${serie.idApi}">
                     <input type="hidden" name="command" value="RegistroSerie.adicionar">
                     <button class="btn waves-effect waves-light white-text" style="background-color: #8E001C; margin-top: 10px;">
                         <a href="home.jsp" class="white-text">Voltar</a>

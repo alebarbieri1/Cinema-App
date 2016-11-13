@@ -6,6 +6,7 @@
 package com.br.cinema.model.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,10 +16,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -49,6 +52,10 @@ public class Usuario implements Serializable {
     private String senha;
     @Column(name = "ACESSO")
     private Integer acesso;
+    @OneToMany(mappedBy = "idUsuario")
+    private List<RegistroFilme> registroFilmeList;
+    @OneToMany(mappedBy = "idUsuario")
+    private List<RegistroSerie> registroSerieList;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
     private UsuarioInfo usuarioInfo;
 
@@ -89,6 +96,24 @@ public class Usuario implements Serializable {
 
     public void setAcesso(Integer acesso) {
         this.acesso = acesso;
+    }
+
+    @XmlTransient
+    public List<RegistroFilme> getRegistroFilmeList() {
+        return registroFilmeList;
+    }
+
+    public void setRegistroFilmeList(List<RegistroFilme> registroFilmeList) {
+        this.registroFilmeList = registroFilmeList;
+    }
+
+    @XmlTransient
+    public List<RegistroSerie> getRegistroSerieList() {
+        return registroSerieList;
+    }
+
+    public void setRegistroSerieList(List<RegistroSerie> registroSerieList) {
+        this.registroSerieList = registroSerieList;
     }
 
     public UsuarioInfo getUsuarioInfo() {

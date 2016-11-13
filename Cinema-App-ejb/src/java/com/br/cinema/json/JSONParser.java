@@ -81,7 +81,7 @@ public class JSONParser {
 
         Serie s = new Serie();
         s.setNomeSerie(name);
-        s.setIdSerie(id);
+        s.setIdApi(id);
         s.setEpisodios(number_of_episodes);
         s.setPoster_path(poster_path);
 

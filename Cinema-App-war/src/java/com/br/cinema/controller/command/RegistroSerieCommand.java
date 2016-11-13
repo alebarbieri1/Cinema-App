@@ -71,7 +71,14 @@ public class RegistroSerieCommand implements Command {
         idU = Long.parseLong(request.getParameter("id_usuario"));
         String statusPadrao = "";
         Usuario u = usuarioDAO.readById(idU);
-        Serie s = serieDAO.readById(idS);
+        Serie s = serieDAO.readByIdApi(idS);
+        if (s == null) {
+            String content = JSONParser.openURL("https://api.themoviedb.org/3/tv/" + idS + "?api_key=0793bedcbb5893728b91c114222266ff&language=en-US");
+            if (content != null) {
+                s = JSONParser.parseSerieDetails(content);
+                serieDAO.create(s);
+            }
+        }
 
         //Tratamento do Status para evitar inconsistencia
         switch (status) {
@@ -102,13 +109,13 @@ public class RegistroSerieCommand implements Command {
             rs = new RegistroSerie();
             rs.setIdUsuario(usuarioDAO.readById(idU));
             rs.setProgresso(progresso);
-            rs.setStatus(status);
-            rs.setIdSerie(serieDAO.readById(idS));
+            rs.setStatus(statusPadrao);
+            rs.setIdSerie(serieDAO.readByIdApi(idS));
             registroSerieDAO.create(rs);
             // Caso já exista um registro da série para o usuário
         } else {
             rs.setProgresso(progresso);
-            rs.setStatus(status);
+            rs.setStatus(statusPadrao);
             registroSerieDAO.update(rs);
         }
         responsePage = "home.jsp";
