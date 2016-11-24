@@ -65,7 +65,7 @@
                         <c:if test="${serie.poster_path != ''}">
                             <img src="https://image.tmdb.org/t/p/w500${serie.poster_path}" width="300" height="300" style="align-items: center;">
                         </c:if>
-                        <figcaption>${serie.nomeSerie}</figcaption>
+                        <figcaption>${serie.nomeSerie} - ${serie.episodios} episódios</figcaption>
                     </figure>
                 </div>
                 <form action="Controller" method="POST">

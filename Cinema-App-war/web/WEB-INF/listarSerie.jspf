@@ -1,5 +1,6 @@
 <br>
 <div class="container">
+    <h4 style="color: black; font-style: italic;"><u>Séries</u></h4>
     <c:forEach items="${series}" var="s"> 
         <a href="Controller?command=Serie.listarEsta&id=${s.idApi}" style="text-decoration: none; color: black;"> 
             <div class="col s12 z-depth-4 card-panel seriesCard">
@@ -13,7 +14,6 @@
                     </c:if>
                     <b><i>#${s.idApi}</i></b><br>
                     <b><i style="font-size: 25px; color: black;">${s.nomeSerie}</i></b><br>
-                    <b>Episodes:&nbsp;</b>${s.episodios}<br><br>
                 </div>
             </div>
         </a>

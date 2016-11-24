@@ -6,14 +6,19 @@
 package com.br.cinema.controller.command;
 
 import com.br.cinema.json.JSONParser;
+import com.br.cinema.model.dao.RegistroFilmeDAO;
 import com.br.cinema.model.dao.RegistroSerieDAO;
 import com.br.cinema.model.dao.SerieDAO;
 import com.br.cinema.model.dao.UsuarioDAO;
+import com.br.cinema.model.entities.RegistroFilme;
 import com.br.cinema.model.entities.RegistroSerie;
 import com.br.cinema.model.entities.Serie;
 import com.br.cinema.model.entities.Usuario;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
@@ -27,6 +32,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author Alexandre Barbieri
  */
 public class RegistroSerieCommand implements Command {
+
+    RegistroFilmeDAO registroFilmeDAO = lookupRegistroFilmeDAOBean();
 
     SerieDAO serieDAO = lookupSerieDAOBean();
 
@@ -119,6 +126,51 @@ public class RegistroSerieCommand implements Command {
             registroSerieDAO.update(rs);
         }
         responsePage = "home.jsp";
+        contarRegistros();
+    }
+
+    public void contarRegistros() {
+        List<RegistroSerie> rs = registroSerieDAO.read();
+        Usuario u = (Usuario) request.getSession().getAttribute("usuario");
+        Long id = u.getIdUsuario();
+
+        // Id da série/status
+        Map<Long, String> registros_serie_distintos = new HashMap<>();
+
+        if (rs != null) {
+            for (int i = 0; i < rs.size(); i++) {
+                if (id.equals(rs.get(i).getIdUsuario().getIdUsuario())) {
+                    registros_serie_distintos.put(rs.get(i).getIdSerie().getIdSerie(), rs.get(i).getStatus());
+                }
+            }
+        }
+
+        Integer completos = Collections.frequency(new ArrayList<>(registros_serie_distintos.values()), "completo");
+        Integer assistindo = Collections.frequency(new ArrayList<>(registros_serie_distintos.values()), "assistindo");
+
+        List<RegistroFilme> rf = registroFilmeDAO.read();
+
+        // Id do filme/status
+        Map<Long, String> registros_filme_distintos = new HashMap<>();
+
+        if (rf != null) {
+            for (int i = 0; i < rf.size(); i++) {
+                if (id.equals(rf.get(i).getIdUsuario().getIdUsuario())) {
+                    registros_filme_distintos.put(rf.get(i).getIdFilme().getIdFilme(), rf.get(i).getStatus());
+                }
+            }
+        }
+
+        completos += Collections.frequency(new ArrayList<>(registros_filme_distintos.values()), "completo");
+        assistindo += Collections.frequency(new ArrayList<>(registros_filme_distintos.values()), "assistindo");
+
+        u.getUsuarioInfo().setCompletos(completos);
+        u.getUsuarioInfo().setAssistindo(assistindo);
+
+        usuarioDAO.update(u);
+
+        request.getSession().setAttribute("usuario", u);
+
     }
 
     private RegistroSerieDAO lookupRegistroSerieDAOBean() {
@@ -145,6 +197,16 @@ public class RegistroSerieCommand implements Command {
         try {
             Context c = new InitialContext();
             return (SerieDAO) c.lookup("java:global/Cinema-App/Cinema-App-ejb/SerieDAO!com.br.cinema.model.dao.SerieDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private RegistroFilmeDAO lookupRegistroFilmeDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (RegistroFilmeDAO) c.lookup("java:global/Cinema-App/Cinema-App-ejb/RegistroFilmeDAO!com.br.cinema.model.dao.RegistroFilmeDAO");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);

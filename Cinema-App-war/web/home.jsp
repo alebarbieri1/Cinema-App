@@ -57,18 +57,16 @@
                 <c:choose>
                     <c:when test="${page.equals('bemvindo')}">
                         <button class="btn waves-effect waves-light" style="background-color: #8E001C; margin-top: 10px;">
-                            <a href="Controller?command=Serie.listar" class="white-text">Series</a>
+                            <a href="Controller?command=Serie.listar" class="white-text">Séries</a>
                         </button>
                         <button class="btn waves-effect waves-light" style="background-color: #8E001C; margin-top: 10px;">
                             <a href="Controller?command=Filme.listar" class="white-text">Filmes</a>
                         </button>
                         <c:if test="${series != null}">
                             <%@include file="WEB-INF/listarSerie.jspf"%>
-
                         </c:if>
                         <c:if test="${filmes != null}">
                             <%@include file="WEB-INF/listarFilme.jspf"%>
-
                         </c:if>
                     </c:when>
                     <c:when test="${page.equals('perfil')}">

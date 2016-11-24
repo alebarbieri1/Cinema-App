@@ -65,7 +65,6 @@ public class RegistroFilmeCommand implements Command {
         idF = Long.parseLong(request.getParameter("id_filme"));
         idU = Long.parseLong(request.getParameter("id_usuario"));
 
-        
         //Caso o filme não exista, acessar a API e cadastrar o filme no banco.
         Filme f = filmeDAO.readByIdApi(idF);
         if (f == null) {
@@ -95,6 +94,11 @@ public class RegistroFilmeCommand implements Command {
 
         rf.setIdUsuario(usuarioDAO.readById(idU));
         registroFilmeDAO.create(rf);
+
+        RegistroSerieCommand rsc = new RegistroSerieCommand();
+        rsc.init(request, response);
+        rsc.contarRegistros();
+        
         responsePage = "home.jsp";
     }
 

@@ -45,6 +45,7 @@ tr:nth-child(even) {
 .seriesCard {
     background-color: #E7E8D1; 
     display: block;
+    height: 120px;
 }
 
 .seriesCard:hover {

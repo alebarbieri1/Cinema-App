@@ -142,6 +142,14 @@ public class UserCommand implements Command {
         Usuario u = new Usuario();
         u.setNomeUsuario(request.getParameter("nome_usuario"));
         u.setAcesso(0);
+
+        if (usuarioDAO.readByEmail(request.getParameter("email")) != null) {
+            responsePage = "error.jsp";
+            request.getSession().setAttribute("erro", "E-mail já cadastrado");
+            request.getSession().setAttribute("previousPage", "register.jsp");
+            return;
+        }
+
         //Verificar se nome de usuario ja existe
         if (usuarioDAO.readByName(u.getNomeUsuario()) != null) {
             // Caso não exista nenhum usuário com o nome escolhido, o método acima lançará uma excessão, impedindo a execução das linhas abaixo

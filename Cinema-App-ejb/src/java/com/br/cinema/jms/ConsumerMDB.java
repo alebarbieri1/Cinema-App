@@ -35,7 +35,7 @@ public class ConsumerMDB implements MessageListener {
     public void onMessage(Message message) {
         TextMessage tm = (TextMessage) message;
         try {
-            File f = new File("C:\\Users\\Prog Felipe\\Documents\\NetBeansProjects\\Cinema-App\\log\\log.txt");
+            File f = new File("C:\\Users\\SPSILVA\\Documents\\NetBeansProjects\\Cinema-App\\log\\log.txt");
             try {
                 FileOutputStream fos = new FileOutputStream(f, true);
                 fos.write((tm.getText() + "\n").getBytes());

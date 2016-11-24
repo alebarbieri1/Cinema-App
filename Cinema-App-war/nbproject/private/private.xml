@@ -3,13 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/src/java/com/br/cinema/controller/command/SerieCommand.java</file>
             <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/src/java/com/br/cinema/controller/command/UserCommand.java</file>
-            <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/src/java/com/br/cinema/controller/Controller.java</file>
+            <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/src/java/com/br/cinema/controller/command/SerieCommand.java</file>
+            <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/src/java/com/br/cinema/controller/command/RegistroFilmeCommand.java</file>
             <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/web/serie.jsp</file>
-            <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/web/WEB-INF/painel.jspf</file>
             <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/web/home.jsp</file>
+            <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/web/WEB-INF/listarFilme.jspf</file>
             <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/src/java/com/br/cinema/controller/command/RegistroSerieCommand.java</file>
+            <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/web/WEB-INF/listarSerie.jspf</file>
             <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/web/register.jsp</file>
             <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/web/css/estilo.css</file>
             <file>file:/C:/Users/SPSILVA/Documents/NetBeansProjects/Cinema-App/Cinema-App-war/web/index.jsp</file>
